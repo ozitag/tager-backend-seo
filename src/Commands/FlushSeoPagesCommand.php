@@ -3,6 +3,8 @@
 namespace OZiTAG\Tager\Backend\Seo\Commands;
 
 use Illuminate\Console\Command;
+use OZiTAG\Tager\Backend\Seo\Models\SeoPage;
+use OZiTAG\Tager\Backend\Seo\Repositories\SeoPageRepository;
 
 class FlushSeoPagesCommand extends Command
 {
@@ -20,12 +22,31 @@ class FlushSeoPagesCommand extends Command
      */
     protected $description = 'Sync SEO pages in DB with config';
 
-    public function handle()
+    private function getPageNameByAlias($alias)
     {
-        $pages = config()->get('filestorage.pages');
+        $result = str_replace('-', ' ', $alias);
+        $result = str_replace('_', ' ', $alias);
 
-        echo 'Tager SEO - It works, SEO config:';
-        print_r($pages);
-        exit;
+        return trim(mb_strtoupper(mb_substr($alias, 0, 1)) . mb_substr($alias, 1));
+    }
+
+    public function handle(SeoPageRepository $repository)
+    {
+        $pages = config()->get('tager-seo.pages');
+
+        foreach ($pages as $alias => $name) {
+            if (is_numeric($alias)) {
+                $alias = $name;
+                $name = $this->getPageNameByAlias($alias);
+            }
+
+            $model = $repository->getByAlias($alias);
+            if (!$model) {
+                $model = new SeoPage();
+                $model->page = $alias;
+            }
+            $model->name = $name;
+            $model->save();
+        }
     }
 }
