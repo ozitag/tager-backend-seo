@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Seo extends Migration
+class TagerSeo extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,7 @@ class Seo extends Migration
             $table->text('description')->nullable();
             $table->string('open_graph_title')->nullable();
             $table->text('open_graph_description')->nullable();
-            $table->unsignedTinyInteger('open_graph_image_id')->nullable();
+            $table->unsignedBigInteger('open_graph_image_id')->nullable();
             $table->timestamps();
 
             if (Schema::hasTable('files')) {

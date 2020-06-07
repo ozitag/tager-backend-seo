@@ -8,8 +8,6 @@ use Ozerich\FileStorage\Models\File;
 
 class SeoPage extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'tager_seo_pages';
 
     /**
