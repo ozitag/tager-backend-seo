@@ -18,7 +18,7 @@ class SeoPage extends Model
      * @var array
      */
     protected $fillable = [
-        'page', 'title', 'description',
+        'page', 'name', 'title', 'description',
         'open_graph_title', 'open_graph_description', 'open_graph_image_id'
     ];
 

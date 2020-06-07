@@ -3,7 +3,8 @@
 namespace OZiTAG\Tager\Backend\Seo\Features;
 
 use OZiTAG\Tager\Backend\Core\Feature;
-use OZiTAG\Tager\Backend\Seo\Resources\SeoPageParamsResource;
+use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJob;
+use OZiTAG\Tager\Backend\Seo\Resources\PublicSeoResource;
 
 class GetSeoPageSettingsFeature extends Feature
 {
@@ -16,6 +17,11 @@ class GetSeoPageSettingsFeature extends Feature
 
     public function handle()
     {
-        return new SeoPageParamsResource('Title', 'Description', null);
+        $model = $this->run(GetSeoPageJob::class, ['page' => $this->page]);
+        if (!$model) {
+            abort(404, 'Page not found');
+        }
+
+        return new PublicSeoResource($model);
     }
 }

@@ -5,7 +5,7 @@ namespace OZiTAG\Tager\Backend\Seo\Resources;
 use Ozerich\FileStorage\Models\File;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SeoPageParamsResource extends JsonResource
+class SeoParamsResource extends JsonResource
 {
     private $title;
 

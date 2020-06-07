@@ -3,7 +3,8 @@
 namespace OZiTAG\Tager\Backend\Seo\Features\Admin;
 
 use OZiTAG\Tager\Backend\Core\Feature;
-use OZiTAG\Tager\Backend\Core\SuccessResource;
+use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJob;
+use OZiTAG\Tager\Backend\Seo\Resources\AdminSeoPageResource;
 
 class ViewSeoPageFeature extends Feature
 {
@@ -16,6 +17,11 @@ class ViewSeoPageFeature extends Feature
 
     public function handle()
     {
-        return new SuccessResource();
+        $page = $this->run(GetSeoPageJob::class, ['page' => $this->page]);
+        if (!$page) {
+            abort(404, 'Page not found');
+        }
+
+        return new AdminSeoPageResource($page);
     }
 }

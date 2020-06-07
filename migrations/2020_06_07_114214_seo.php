@@ -16,6 +16,7 @@ class Seo extends Migration
         Schema::create('tager_seo_pages', function (Blueprint $table) {
             $table->id();
             $table->string('page');
+            $table->string('name');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('open_graph_title')->nullable();

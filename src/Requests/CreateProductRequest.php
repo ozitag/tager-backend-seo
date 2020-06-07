@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Product;
+namespace  OZiTAG\Tager\Backend\Seo\Requests;
 
 use OZiTAG\Tager\Backend\Core\FormRequest;
 use Ozerich\FileStorage\Rules\FileRule;
@@ -14,7 +14,7 @@ class UpdateSeoPageRequest extends FormRequest
             'description' => 'numeric|nullable',
             'openGraphTitle' => 'string|nullable',
             'openGraphDescription' => 'string|nullable',
-            'coverImage' => ['nullable', 'numeric', new FileRule()],
+            'openGraphImage' => ['nullable', 'numeric', new FileRule()],
         ];
     }
 }
