@@ -3,6 +3,7 @@
 namespace OZiTAG\Tager\Backend\Seo;
 
 use Illuminate\Support\ServiceProvider;
+use OZiTAG\Tager\Backend\Seo\Commands\FlushSeoPagesCommand;
 
 class TagerBackendSeoServiceProvider extends ServiceProvider
 {
@@ -31,5 +32,11 @@ class TagerBackendSeoServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config.php' => config_path('tager-seo.php'),
         ]);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                FlushSeoPagesCommand::class,
+            ]);
+        }
     }
 }
