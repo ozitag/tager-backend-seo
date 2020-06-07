@@ -12,8 +12,8 @@ class SeoPageRepository extends EloquentRepository
         parent::__construct($model);
     }
 
-    public function getByPageId($pageId)
+    public function getByAlias($alias)
     {
-        return SeoPage::wherePage($pageId)->first();
+        return SeoPage::wherePage($alias)->first();
     }
 }

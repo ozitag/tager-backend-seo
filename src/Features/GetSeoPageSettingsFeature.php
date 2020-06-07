@@ -3,7 +3,7 @@
 namespace OZiTAG\Tager\Backend\Seo\Features;
 
 use OZiTAG\Tager\Backend\Core\Feature;
-use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJob;
+use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJobByAlias;
 use OZiTAG\Tager\Backend\Seo\Resources\PublicSeoResource;
 
 class GetSeoPageSettingsFeature extends Feature
@@ -17,7 +17,7 @@ class GetSeoPageSettingsFeature extends Feature
 
     public function handle()
     {
-        $model = $this->run(GetSeoPageJob::class, ['page' => $this->page]);
+        $model = $this->run(GetSeoPageJobByAlias::class, ['alias' => $this->page]);
         if (!$model) {
             abort(404, 'Page not found');
         }

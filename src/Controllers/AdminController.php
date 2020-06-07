@@ -14,17 +14,17 @@ class AdminController extends Controller
         return $this->serve(ListSeoPagesFeature::class);
     }
 
-    public function view($page)
+    public function view($id)
     {
         return $this->serve(ViewSeoPageFeature::class, [
-            'page' => $page
+            'id' => $id
         ]);
     }
 
-    public function update($page)
+    public function update($id)
     {
         return $this->serve(UpdateSeoPageFeature::class, [
-            'page' => $page
+            'id' => $id
         ]);
     }
 }

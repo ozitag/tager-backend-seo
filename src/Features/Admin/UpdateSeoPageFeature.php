@@ -3,22 +3,22 @@
 namespace OZiTAG\Tager\Backend\Seo\Features\Admin;
 
 use OZiTAG\Tager\Backend\Core\Feature;
-use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJob;
+use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJobById;
 use OZiTAG\Tager\Backend\Seo\Requests\UpdateSeoPageRequest;
 use OZiTAG\Tager\Backend\Seo\Resources\AdminSeoPageResource;
 
 class UpdateSeoPageFeature extends Feature
 {
-    private $page;
+    private $id;
 
-    public function __construct($page)
+    public function __construct($id)
     {
-        $this->page = $page;
+        $this->id = $id;
     }
 
     public function handle(UpdateSeoPageRequest $request)
     {
-        $page = $this->run(GetSeoPageJob::class, ['page' => $this->page]);
+        $page = $this->run(GetSeoPageJobById::class, ['id' => $this->id]);
         if (!$page) {
             abort(404, 'Page not found');
         }

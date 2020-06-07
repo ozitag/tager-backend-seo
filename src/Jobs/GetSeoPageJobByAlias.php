@@ -4,18 +4,18 @@ namespace OZiTAG\Tager\Backend\Seo\Jobs;
 
 use OZiTAG\Tager\Backend\Seo\Repositories\SeoPageRepository;
 
-class GetSeoPageJob
+class GetSeoPageJobByAlias
 {
     /** @var string */
-    private $page;
+    private $alias;
 
-    public function __construct($page)
+    public function __construct($alias)
     {
-        $this->page = $page;
+        $this->alias = $alias;
     }
 
     public function handle(SeoPageRepository $repository)
     {
-        return $repository->getByPageId($this->page);
+        return $repository->getByAlias($this->alias);
     }
 }
