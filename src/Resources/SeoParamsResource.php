@@ -7,15 +7,15 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class SeoParamsResource extends JsonResource
 {
-    private $title;
+    protected $title;
 
-    private $description;
+    protected $description;
 
-    private $openGraphImage;
+    protected $openGraphImage;
 
-    private $openGraphTitle;
+    protected $openGraphTitle;
 
-    private $openGraphDescription;
+    protected $openGraphDescription;
 
     public function __construct($title, $description = null, ?File $image = null, $openGraphTitle = null, $openGraphDescription = null)
     {
