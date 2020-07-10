@@ -14,16 +14,15 @@ class AdminSeoPageResource extends JsonResource
      */
     public function toArray($request)
     {
-        $seoParams = new SeoParamsResource(
-            $this->title, $this->description, $this->openGraphImage,
-            !empty($this->open_graph_title) ? $this->open_graph_title : $this->title,
-            !empty($this->open_graph_description) ? $this->open_graph_description : $this->description
-        );
-
-        return array_merge([
+        return [
             'id' => $this->id,
             'alias' => $this->page,
             'name' => $this->page,
-        ], $seoParams->toArray($request));
+            'title' => $this->title,
+            'description' => $this->description,
+            'openGraphTitle' => $this->openGraphTitle,
+            'openGraphDescription' => $this->openGraphDescription,
+            'openGraphImage' => $this->openGraphImage ? $this->openGraphImage->toJson() : null,
+        ];
     }
 }
