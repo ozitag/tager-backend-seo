@@ -3,10 +3,8 @@
 namespace OZiTAG\Tager\Backend\Seo\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use OZiTAG\Tager\Backend\Seo\Models\SeoPage;
-use Ozerich\FileStorage\Models\File;
 
-class AdminSeoPageResource extends PublicSeoResource
+class AdminSeoPageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +14,16 @@ class AdminSeoPageResource extends PublicSeoResource
      */
     public function toArray($request)
     {
+        $seoParams = new SeoParamsResource(
+            $this->title, $this->description, $this->openGraphImage,
+            !empty($this->open_graph_title) ? $this->open_graph_title : $this->title,
+            !empty($this->open_graph_description) ? $this->open_graph_description : $this->description
+        );
+
         return array_merge([
             'id' => $this->id,
             'alias' => $this->page,
             'name' => $this->page,
-        ], parent::toArray($request));
+        ], $seoParams->toArray($request));
     }
 }
