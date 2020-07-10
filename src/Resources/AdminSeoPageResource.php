@@ -17,12 +17,12 @@ class AdminSeoPageResource extends JsonResource
         return [
             'id' => $this->id,
             'alias' => $this->page,
-            'name' => $this->page,
+            'name' => $this->name,
             'title' => $this->title,
             'description' => $this->description,
-            'openGraphTitle' => $this->openGraphTitle,
-            'openGraphDescription' => $this->openGraphDescription,
-            'openGraphImage' => $this->openGraphImage ? $this->openGraphImage->getShortJson() : null,
+            'openGraphTitle' => $this->open_graph_title,
+            'openGraphDescription' => $this->open_graph_description,
+            'openGraphImage' => $this->open_graph_image ? $this->open_graph_image->getShortJson() : null,
         ];
     }
 }
