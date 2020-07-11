@@ -22,7 +22,7 @@ class AdminSeoPageResource extends JsonResource
             'description' => $this->description,
             'openGraphTitle' => $this->open_graph_title,
             'openGraphDescription' => $this->open_graph_description,
-            'openGraphImage' => $this->open_graph_image ? $this->open_graph_image->getShortJson() : null,
+            'openGraphImage' => $this->openGraphImage ? $this->openGraphImage->getShortJson() : null,
         ];
     }
 }
