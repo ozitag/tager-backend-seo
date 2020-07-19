@@ -2,10 +2,10 @@
 
 namespace OZiTAG\Tager\Backend\Seo;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use OZiTAG\Tager\Backend\Seo\Commands\FlushSeoPagesCommand;
 
-class TagerBackendSeoServiceProvider extends RouteServiceProvider
+class TagerBackendSeoServiceProvider extends ServiceProvider
 {
 
     /**
@@ -38,7 +38,5 @@ class TagerBackendSeoServiceProvider extends RouteServiceProvider
                 FlushSeoPagesCommand::class,
             ]);
         }
-
-        parent::boot();
     }
 }
