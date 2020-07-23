@@ -2,8 +2,6 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Resources;
 
-use Ozerich\FileStorage\Models\File;
-use Illuminate\Http\Resources\Json\JsonResource;
 use OZiTAG\Tager\Backend\Seo\Models\SeoPage;
 
 class PublicSeoResource extends SeoParamsResource

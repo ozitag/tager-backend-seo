@@ -2,7 +2,7 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Requests;
 
-use OZiTAG\Tager\Backend\Core\FormRequest;
+use OZiTAG\Tager\Backend\Core\Http\FormRequest;
 use Ozerich\FileStorage\Rules\FileRule;
 
 class UpdateSeoPageRequest extends FormRequest

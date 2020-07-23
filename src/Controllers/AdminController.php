@@ -2,7 +2,7 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Controllers;
 
-use OZiTAG\Tager\Backend\Core\Controller;
+use OZiTAG\Tager\Backend\Core\Controllers\Controller;
 use OZiTAG\Tager\Backend\Seo\Features\Admin\ListSeoPagesFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Admin\UpdateSeoPageFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Admin\ViewSeoPageFeature;

@@ -2,9 +2,10 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Jobs;
 
+use OZiTAG\Tager\Backend\Core\Jobs\Job;
 use OZiTAG\Tager\Backend\Seo\Repositories\SeoPageRepository;
 
-class GetSeoPageJobByAlias
+class GetSeoPageJobByAlias extends Job
 {
     /** @var string */
     private $alias;

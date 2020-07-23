@@ -1,6 +1,6 @@
 <?php
 
-namespace OZiTAG\Tager\Backend\Seo\Commands;
+namespace OZiTAG\Tager\Backend\Seo\Console;
 
 use Illuminate\Console\Command;
 use OZiTAG\Tager\Backend\Seo\Models\SeoPage;
@@ -24,9 +24,6 @@ class FlushSeoPagesCommand extends Command
 
     private function getPageNameByAlias($alias)
     {
-        $result = str_replace('-', ' ', $alias);
-        $result = str_replace('_', ' ', $alias);
-
         return trim(mb_strtoupper(mb_substr($alias, 0, 1)) . mb_substr($alias, 1));
     }
 

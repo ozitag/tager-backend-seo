@@ -2,7 +2,7 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Features;
 
-use OZiTAG\Tager\Backend\Core\Feature;
+use OZiTAG\Tager\Backend\Core\Features\Feature;
 use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJobByAlias;
 use OZiTAG\Tager\Backend\Seo\Resources\PublicSeoResource;
 
