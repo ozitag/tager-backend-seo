@@ -2,10 +2,13 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Features\Admin;
 
+use App\Enums\FileScenario;
+use Ozerich\FileStorage\Storage;
 use OZiTAG\Tager\Backend\Core\Features\Feature;
 use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJobById;
 use OZiTAG\Tager\Backend\Seo\Requests\UpdateSeoPageRequest;
 use OZiTAG\Tager\Backend\Seo\Resources\AdminSeoPageResource;
+use OZiTAG\Tager\Backend\Seo\TagerSeoConfig;
 
 class UpdateSeoPageFeature extends Feature
 {
@@ -16,11 +19,15 @@ class UpdateSeoPageFeature extends Feature
         $this->id = $id;
     }
 
-    public function handle(UpdateSeoPageRequest $request)
+    public function handle(UpdateSeoPageRequest $request, Storage $fileStorage, TagerSeoConfig $config)
     {
         $page = $this->run(GetSeoPageJobById::class, ['id' => $this->id]);
         if (!$page) {
             abort(404, 'Page not found');
+        }
+
+        if ($request->openGraphImage) {
+            $fileStorage->setFileScenario($request->openGraphImage, $config->getOpenGraphScenario());
         }
 
         $page->title = $request->title;

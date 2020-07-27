@@ -17,15 +17,19 @@ class SeoParamsResource extends JsonResource
 
     protected $openGraphDescription;
 
-    public function __construct($title, $description = null, ?File $image = null, $openGraphTitle = null, $openGraphDescription = null)
+    public function __construct($title, $description = null)
     {
         parent::__construct([]);
 
         $this->title = $title;
         $this->description = $description;
-        $this->openGraphImage = $image;
-        $this->openGraphTitle = $openGraphTitle;
-        $this->openGraphDescription = $openGraphDescription;
+    }
+
+    public function setOpenGraph($imageUrl, $title, $description)
+    {
+        $this->openGraphImage = $imageUrl;
+        $this->openGraphTitle = $title;
+        $this->openGraphDescription = $description;
     }
 
     /**
@@ -42,7 +46,7 @@ class SeoParamsResource extends JsonResource
             'openGraph' => [
                 'title' => !empty($this->openGraphTitle) ? $this->openGraphTitle : $this->title,
                 'description' => !empty($this->openGraphDescription) ? $this->openGraphDescription : $this->description,
-                'image' => $this->openGraphImage ? $this->openGraphImage->getUrl('og') : null,
+                'image' => $this->openGraphImage
             ]
         ];
     }
