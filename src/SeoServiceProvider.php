@@ -5,7 +5,7 @@ namespace OZiTAG\Tager\Backend\Seo;
 use Illuminate\Support\ServiceProvider;
 use OZiTAG\Tager\Backend\Seo\Console\FlushSeoPagesCommand;
 
-class TagerBackendSeoServiceProvider extends ServiceProvider
+class SeoServiceProvider extends ServiceProvider
 {
 
     /**
