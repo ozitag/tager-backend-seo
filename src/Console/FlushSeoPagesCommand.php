@@ -30,6 +30,11 @@ class FlushSeoPagesCommand extends Command
     public function handle(SeoPageRepository $repository)
     {
         $pages = config()->get('tager-seo.pages');
+        if (!$pages) {
+            $pages = [];
+        }
+
+        $exists = [];
 
         foreach ($pages as $alias => $name) {
             if (is_numeric($alias)) {
@@ -44,6 +49,14 @@ class FlushSeoPagesCommand extends Command
             }
             $model->name = $name;
             $model->save();
+
+            $exists[] = $model->id;
+        }
+
+        foreach ($repository->all() as $model) {
+            if (!in_array($model->id, $exists)) {
+                $model->delete();
+            }
         }
     }
 }
