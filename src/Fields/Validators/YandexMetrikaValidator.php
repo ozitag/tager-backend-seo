@@ -8,6 +8,12 @@ class YandexMetrikaValidator implements IModuleSettingsValidator
 {
     public function validate($value)
     {
+        $value = trim($value);
+
+        if (empty($value)) {
+            return true;
+        }
+
         if (!preg_match('#^\d{8}$#', $value)) {
             return 'ID счетчика должен состоять из 8 цифр';
         }

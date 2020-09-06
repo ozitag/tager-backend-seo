@@ -46,19 +46,19 @@ class SeoServicesResource extends JsonResource
         return [
             'facebook' => [
                 'enabled' => !empty($this->facebookPixelId),
-                'value' => $this->facebookPixelId
+                'value' => $this->facebookPixelId ? trim($this->facebookPixelId) : null
             ],
             'googleAnalytics' => [
                 'enabled' => !empty($this->googleAnalyticsId),
-                'value' => $this->googleAnalyticsId
+                'value' => $this->googleAnalyticsId ? trim($this->googleAnalyticsId) : null
             ],
             'googleTagManagerId' => [
                 'enabled' => !empty($this->googleTagManagerId),
-                'value' => $this->googleTagManagerId
+                'value' => $this->googleTagManagerId ? trim($this->googleTagManagerId) : null
             ],
             'yandexMetrika' => [
                 'enabled' => !empty($this->yandexCounterId),
-                'value' => $this->yandexCounterId
+                'value' => $this->yandexCounterId ? trim($this->yandexCounterId) : null
             ]
         ];
     }
