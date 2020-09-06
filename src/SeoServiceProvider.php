@@ -3,9 +3,10 @@
 namespace OZiTAG\Tager\Backend\Seo;
 
 use Illuminate\Support\ServiceProvider;
+use OZiTAG\Tager\Backend\ModuleSettings\ModuleSettingsServiceProvider;
 use OZiTAG\Tager\Backend\Seo\Console\FlushSeoPagesCommand;
 
-class SeoServiceProvider extends ServiceProvider
+class SeoServiceProvider extends ModuleSettingsServiceProvider
 {
 
     /**
@@ -25,6 +26,8 @@ class SeoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        parent::boot();
+        
         $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
 
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');

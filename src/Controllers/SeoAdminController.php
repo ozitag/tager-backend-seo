@@ -7,7 +7,7 @@ use OZiTAG\Tager\Backend\Seo\Features\Admin\ListSeoPagesFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Admin\UpdateSeoPageFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Admin\ViewSeoPageFeature;
 
-class AdminController extends Controller
+class SeoAdminController extends Controller
 {
     public function index()
     {

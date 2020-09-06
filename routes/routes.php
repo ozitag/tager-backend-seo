@@ -1,13 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use OZiTAG\Tager\Backend\Seo\Controllers\PublicController;
-use OZiTAG\Tager\Backend\Seo\Controllers\AdminController;
+use OZiTAG\Tager\Backend\Seo\Controllers\SeoPublicController;
+use OZiTAG\Tager\Backend\Seo\Controllers\SeoAdminController;
+use OZiTAG\Tager\Backend\Seo\Controllers\SeoAdminSettingsController;
 
-Route::get('/tager/seo/{page}', [PublicController::class, 'page']);
+Route::group(['prefix' => 'tager/seo', 'middleware' => 'api.cache'], function () {
+    Route::get('/services', [SeoPublicController::class, 'services']);
+    Route::get('/{page}', [SeoPublicController::class, 'page']);
+});
 
-Route::group(['prefix' => 'admin', 'middleware' => ['passport:administrators', 'auth:api']], function () {
-    Route::get('/seo/pages', [AdminController::class, 'index']);
-    Route::get('/seo/pages/{id}', [AdminController::class, 'view']);
-    Route::put('/seo/pages/{id}', [AdminController::class, 'update']);
+Route::group(['prefix' => 'admin/seo', 'middleware' => ['passport:administrators', 'auth:api']], function () {
+    Route::get('/pages', [SeoAdminController::class, 'index']);
+    Route::get('/pages/{id}', [SeoAdminController::class, 'view']);
+    Route::put('/pages/{id}', [SeoAdminController::class, 'update']);
+
+    Route::get('/settings', [SeoAdminSettingsController::class, 'index']);
+    Route::post('/settings', [SeoAdminSettingsController::class, 'save']);
 });

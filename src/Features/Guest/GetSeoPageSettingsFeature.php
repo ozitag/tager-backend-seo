@@ -1,6 +1,6 @@
 <?php
 
-namespace OZiTAG\Tager\Backend\Seo\Features;
+namespace OZiTAG\Tager\Backend\Guest\Features;
 
 use Ozerich\FileStorage\Exceptions\InvalidThumbnailException;
 use OZiTAG\Tager\Backend\Core\Features\Feature;
