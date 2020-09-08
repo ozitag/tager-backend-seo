@@ -15,6 +15,10 @@ class SeoServicesResource extends JsonResource
 
     private $facebookPixelId;
 
+    private $yandexVerification;
+
+    private $googleVerification;
+
     public function setYandexCounterId($value)
     {
         $this->yandexCounterId = $value;
@@ -35,6 +39,16 @@ class SeoServicesResource extends JsonResource
         $this->facebookPixelId = $value;
     }
 
+    public function setGoogleVerification($value)
+    {
+        $this->googleVerification = $value;
+    }
+
+    public function setYandexVerification($value)
+    {
+        $this->yandexVerification = $value;
+    }
+
     /**
      * Transform the resource into an array.
      *
@@ -44,22 +58,12 @@ class SeoServicesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'facebook' => [
-                'enabled' => !empty($this->facebookPixelId),
-                'value' => $this->facebookPixelId ? trim($this->facebookPixelId) : null
-            ],
-            'googleAnalytics' => [
-                'enabled' => !empty($this->googleAnalyticsId),
-                'value' => $this->googleAnalyticsId ? trim($this->googleAnalyticsId) : null
-            ],
-            'googleTagManagerId' => [
-                'enabled' => !empty($this->googleTagManagerId),
-                'value' => $this->googleTagManagerId ? trim($this->googleTagManagerId) : null
-            ],
-            'yandexMetrika' => [
-                'enabled' => !empty($this->yandexCounterId),
-                'value' => $this->yandexCounterId ? trim($this->yandexCounterId) : null
-            ]
+            'yandexVerification' => $this->yandexVerification ?? null,
+            'googleVerification' => $this->googleVerification ?? null,
+            'googleAnalyticsId' => $this->googleAnalyticsId ?? null,
+            'googleTagManagerId' => $this->googleTagManagerId ?? null,
+            'yandexCounterId' => $this->yandexCounterId ?? null,
+            'facebookPixelId' => $this->facebookPixelId ?? null,
         ];
     }
 }

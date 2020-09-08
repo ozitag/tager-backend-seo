@@ -12,7 +12,9 @@ use OZiTAG\Tager\Backend\ModuleSettings\Structures\ModuleSettingField;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\FacebookPixelValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleAnalyticsValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleTagManagerValidator;
+use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleVerificationValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexMetrikaValidator;
+use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
 
 class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
 {
@@ -20,6 +22,8 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
     const GoogleTagManagerId = 'GOOGLE_TAG_MANAGER_ID';
     const YandexMetrikaCounterId = 'YANDEX_METRIKA_COUNTER_ID';
     const FacebookPixelId = 'FACEBOOK_PIXEL_ID';
+    const GoogleVerification = 'GOOGLE_VERIFICATION';
+    const YandexVerification = 'YANDEX_VERIFICATION';
 
     public static function field(string $param): ModuleSettingField
     {
@@ -43,6 +47,16 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
                 return new ModuleSettingField(
                     new StringField('Facebook Pixel ID'),
                     new FacebookPixelValidator()
+                );
+            case self::GoogleVerification:
+                return new ModuleSettingField(
+                    new StringField('Google Search Console Verification Code'),
+                    new GoogleVerificationValidator()
+                );
+            case self::YandexVerification:
+                return new ModuleSettingField(
+                    new StringField('Yandex.Webmaster Verification Code'),
+                    new YandexVerificationValidator()
                 );
         }
     }
