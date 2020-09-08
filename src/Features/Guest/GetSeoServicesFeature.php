@@ -31,6 +31,14 @@ class GetSeoServicesFeature extends Feature
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::YandexMetrikaCounterId, FieldType::String)
         );
 
+        $resource->setGoogleVerification(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleVerification, FieldType::String)
+        );
+
+        $resource->setYandexVerification(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::YandexVerification, FieldType::String)
+        );
+
         return $resource;
     }
 }
