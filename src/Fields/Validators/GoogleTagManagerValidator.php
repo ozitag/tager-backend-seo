@@ -14,7 +14,7 @@ class GoogleTagManagerValidator implements IModuleSettingsValidator
             return true;
         }
 
-        if(!preg_match('#^GTM\-[A-Z]{7}$#', $value)){
+        if(!preg_match('#^GTM\-[A-Za-z0-9]{7}$#', $value)){
             return 'Значение должно быть в формате "GTM-XXXXXXX"';
         }
 
