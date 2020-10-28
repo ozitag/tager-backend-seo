@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use OZiTAG\Tager\Backend\Seo\Enums\SeoScope;
+use OZiTAG\Tager\Backend\Rbac\Facades\AccessControlMiddleware;
 use OZiTAG\Tager\Backend\Seo\Controllers\SeoPublicController;
 use OZiTAG\Tager\Backend\Seo\Controllers\SeoAdminController;
 use OZiTAG\Tager\Backend\Seo\Controllers\SeoAdminSettingsController;
@@ -15,6 +17,8 @@ Route::group(['prefix' => 'admin/seo', 'middleware' => ['passport:administrators
     Route::get('/pages/{id}', [SeoAdminController::class, 'view']);
     Route::put('/pages/{id}', [SeoAdminController::class, 'update']);
 
-    Route::get('/settings', [SeoAdminSettingsController::class, 'index']);
-    Route::post('/settings', [SeoAdminSettingsController::class, 'save']);
+    Route::group(['middleware' => [AccessControlMiddleware::scopes(SeoScope::EditServices)]], function () {
+        Route::get('/settings', [SeoAdminSettingsController::class, 'index']);
+        Route::post('/settings', [SeoAdminSettingsController::class, 'save']);
+    });
 });

@@ -2,9 +2,10 @@
 
 namespace OZiTAG\Tager\Backend\Seo;
 
-use Illuminate\Support\ServiceProvider;
 use OZiTAG\Tager\Backend\ModuleSettings\ModuleSettingsServiceProvider;
+use OZiTAG\Tager\Backend\Rbac\TagerScopes;
 use OZiTAG\Tager\Backend\Seo\Console\FlushSeoPagesCommand;
+use OZiTAG\Tager\Backend\Seo\Enums\SeoScope;
 
 class SeoServiceProvider extends ModuleSettingsServiceProvider
 {
@@ -27,7 +28,7 @@ class SeoServiceProvider extends ModuleSettingsServiceProvider
     public function boot()
     {
         parent::boot();
-        
+
         $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
 
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
@@ -41,5 +42,9 @@ class SeoServiceProvider extends ModuleSettingsServiceProvider
                 FlushSeoPagesCommand::class,
             ]);
         }
+
+        TagerScopes::registerGroup('SEO', [
+            SeoScope::EditServices => 'Edit services',
+        ]);
     }
 }
