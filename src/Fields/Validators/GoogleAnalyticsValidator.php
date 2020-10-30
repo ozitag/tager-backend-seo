@@ -13,9 +13,9 @@ class GoogleAnalyticsValidator implements IModuleSettingsValidator
         if (empty($value)) {
             return true;
         }
-        
-        if(!preg_match('#^UA\-\d{8}\-\d$#', $value)){
-            return 'Значение должно быть в формате "UA-12345678-1"';
+
+        if(!preg_match('#^UA\-\d{4,10}\-\d{1,4}$#', $value)){
+            return 'Invalid GA account number"';
         }
 
         return true;
