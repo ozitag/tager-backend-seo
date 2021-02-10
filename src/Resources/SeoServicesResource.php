@@ -7,60 +7,66 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class SeoServicesResource extends JsonResource
 {
-    private $yandexCounterId;
+    private ?string $yandexCounterId = null;
 
-    private $googleAnalyticsId;
+    private ?string $googleAnalyticsId = null;
 
-    private $googleTagManagerId;
+    private ?string $googleAnalytics4MeasurementId = null;
 
-    private $facebookPixelId;
+    private ?string $googleAnalytics4ClientSecret = null;
 
-    private $yandexVerification;
+    private ?string $googleTagManagerId = null;
 
-    private $googleVerification;
+    private ?string $facebookPixelId = null;
 
-    public function setYandexCounterId($value)
+    private ?string $yandexVerification = null;
+
+    private ?string $googleVerification = null;
+
+    public function setYandexCounterId(?string $value)
     {
         $this->yandexCounterId = $value;
     }
 
-    public function setGoogleAnalyticsId($value)
+    public function setGoogleAnalyticsId(?string $value)
     {
         $this->googleAnalyticsId = $value;
     }
 
-    public function setGoogleTagManagerId($value)
+    public function setGoogleAnalytics4Data(?string $measurementId, ?string $clientSecret)
+    {
+        $this->googleAnalytics4MeasurementId = $measurementId;
+        $this->googleAnalytics4ClientSecret = $clientSecret;
+    }
+
+    public function setGoogleTagManagerId(?string $value)
     {
         $this->googleTagManagerId = $value;
     }
 
-    public function setFacebookPixelId($value)
+    public function setFacebookPixelId(?string $value)
     {
         $this->facebookPixelId = $value;
     }
 
-    public function setGoogleVerification($value)
+    public function setGoogleVerification(?string $value)
     {
         $this->googleVerification = $value;
     }
 
-    public function setYandexVerification($value)
+    public function setYandexVerification(?string $value)
     {
         $this->yandexVerification = $value;
     }
 
-    /**
-     * Transform the resource into an array.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
     public function toArray($request)
     {
         return [
             'yandexVerification' => $this->yandexVerification ?? null,
             'googleVerification' => $this->googleVerification ?? null,
             'googleAnalyticsId' => $this->googleAnalyticsId ?? null,
+            'googleAnalytics4MeasurementId' => $this->googleAnalytics4MeasurementId ?? null,
+            'googleAnalytics4ClientSecret' => $this->googleAnalytics4ClientSecret ?? null,
             'googleTagManagerId' => $this->googleTagManagerId ?? null,
             'yandexCounterId' => $this->yandexCounterId ?? null,
             'facebookPixelId' => $this->facebookPixelId ?? null,

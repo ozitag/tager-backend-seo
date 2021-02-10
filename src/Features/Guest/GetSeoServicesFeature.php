@@ -23,6 +23,11 @@ class GetSeoServicesFeature extends Feature
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalyticsTrackingId, FieldType::String)
         );
 
+        $resource->setGoogleAnalytics4Data(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalytics4MeasurementId, FieldType::String),
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalytics4ClientSecret, FieldType::String),
+        );
+
         $resource->setGoogleTagManagerId(
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleTagManagerId, FieldType::String)
         );
@@ -33,6 +38,14 @@ class GetSeoServicesFeature extends Feature
 
         $resource->setGoogleVerification(
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleVerification, FieldType::String)
+        );
+
+        $resource->setYandexVerification(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::YandexVerification, FieldType::String)
+        );
+
+        $resource->setYandexVerification(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::YandexVerification, FieldType::String)
         );
 
         $resource->setYandexVerification(

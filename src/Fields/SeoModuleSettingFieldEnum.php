@@ -19,6 +19,8 @@ use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
 class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
 {
     const GoogleAnalyticsTrackingId = 'GOOGLE_ANALYTICS_TRACKING_ID';
+    const GoogleAnalytics4MeasurementId = 'GOOGLE_ANALYTICS4_MEASUREMENT_ID';
+    const GoogleAnalytics4ClientSecret = 'GOOGLE_ANALYTICS4_TRACKING_ID';
     const GoogleTagManagerId = 'GOOGLE_TAG_MANAGER_ID';
     const YandexMetrikaCounterId = 'YANDEX_METRIKA_COUNTER_ID';
     const FacebookPixelId = 'FACEBOOK_PIXEL_ID';
@@ -30,32 +32,42 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
         switch ($param) {
             case self::GoogleAnalyticsTrackingId:
                 return new ModuleSettingField(
-                    new StringField('Google Analytics Tracking ID'),
+                    new StringField('Google Analytics Universal - Tracking ID'),
+                    new GoogleAnalyticsValidator()
+                );
+            case self::GoogleAnalytics4MeasurementId:
+                return new ModuleSettingField(
+                    new StringField('Google Analytics 4 - Measurement ID'),
+                    new GoogleAnalyticsValidator()
+                );
+            case self::GoogleAnalytics4ClientSecret:
+                return new ModuleSettingField(
+                    new StringField('Google Analytics 4 - Client Secret'),
                     new GoogleAnalyticsValidator()
                 );
             case self::GoogleTagManagerId:
                 return new ModuleSettingField(
-                    new StringField('Google Tag Manager ID'),
+                    new StringField('Google Tag Manager - ID'),
                     new GoogleTagManagerValidator()
                 );
             case self::YandexMetrikaCounterId:
                 return new ModuleSettingField(
-                    new StringField('Yandex Metrika Counter ID'),
+                    new StringField('Yandex Metrika - Counter ID'),
                     new YandexMetrikaValidator()
                 );
             case self::FacebookPixelId:
                 return new ModuleSettingField(
-                    new StringField('Facebook Pixel ID'),
+                    new StringField('Facebook Pixel - ID'),
                     new FacebookPixelValidator()
                 );
             case self::GoogleVerification:
                 return new ModuleSettingField(
-                    new StringField('Google Search Console Verification Code'),
+                    new StringField('Google Search Console - Verification Code'),
                     new GoogleVerificationValidator()
                 );
             case self::YandexVerification:
                 return new ModuleSettingField(
-                    new StringField('Yandex.Webmaster Verification Code'),
+                    new StringField('Yandex.Webmaster - Verification Code'),
                     new YandexVerificationValidator()
                 );
         }
