@@ -2,16 +2,14 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Fields;
 
-use OZiTAG\Tager\Backend\Fields\Base\Field;
-use OZiTAG\Tager\Backend\Fields\Fields\ImageField;
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
-use OZiTAG\Tager\Backend\Fields\Fields\TextField;
 use OZiTAG\Tager\Backend\ModuleSettings\Contracts\IModuleSettingsFieldEnumContract;
 use OZiTAG\Tager\Backend\ModuleSettings\Structures\ModuleSettingFieldEnum;
 use OZiTAG\Tager\Backend\ModuleSettings\Structures\ModuleSettingField;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\FacebookPixelValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleAnalyticsValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleTagManagerValidator;
+use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleAnalytics4MeasurementValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleVerificationValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexMetrikaValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
@@ -37,7 +35,7 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
             case self::GoogleAnalytics4MeasurementId:
                 return new ModuleSettingField(
                     new StringField('Google Analytics 4 - Measurement ID'),
-                    new GoogleAnalyticsValidator()
+                    new GoogleAnalytics4MeasurementValidator()
                 );
             case self::GoogleTagManagerId:
                 return new ModuleSettingField(
