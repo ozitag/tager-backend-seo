@@ -23,9 +23,8 @@ class GetSeoServicesFeature extends Feature
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalyticsTrackingId, FieldType::String)
         );
 
-        $resource->setGoogleAnalytics4Data(
-            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalytics4MeasurementId, FieldType::String),
-            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalytics4ClientSecret, FieldType::String),
+        $resource->setGoogleAnalytics4MeasurementId(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalytics4MeasurementId, FieldType::String)
         );
 
         $resource->setGoogleTagManagerId(

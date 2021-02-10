@@ -20,7 +20,6 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
 {
     const GoogleAnalyticsTrackingId = 'GOOGLE_ANALYTICS_TRACKING_ID';
     const GoogleAnalytics4MeasurementId = 'GOOGLE_ANALYTICS4_MEASUREMENT_ID';
-    const GoogleAnalytics4ClientSecret = 'GOOGLE_ANALYTICS4_TRACKING_ID';
     const GoogleTagManagerId = 'GOOGLE_TAG_MANAGER_ID';
     const YandexMetrikaCounterId = 'YANDEX_METRIKA_COUNTER_ID';
     const FacebookPixelId = 'FACEBOOK_PIXEL_ID';
@@ -38,11 +37,6 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
             case self::GoogleAnalytics4MeasurementId:
                 return new ModuleSettingField(
                     new StringField('Google Analytics 4 - Measurement ID'),
-                    new GoogleAnalyticsValidator()
-                );
-            case self::GoogleAnalytics4ClientSecret:
-                return new ModuleSettingField(
-                    new StringField('Google Analytics 4 - Client Secret'),
                     new GoogleAnalyticsValidator()
                 );
             case self::GoogleTagManagerId:

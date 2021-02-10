@@ -13,8 +13,6 @@ class SeoServicesResource extends JsonResource
 
     private ?string $googleAnalytics4MeasurementId = null;
 
-    private ?string $googleAnalytics4ClientSecret = null;
-
     private ?string $googleTagManagerId = null;
 
     private ?string $facebookPixelId = null;
@@ -33,10 +31,9 @@ class SeoServicesResource extends JsonResource
         $this->googleAnalyticsId = $value;
     }
 
-    public function setGoogleAnalytics4Data(?string $measurementId, ?string $clientSecret)
+    public function setGoogleAnalytics4MeasurementId(?string $value)
     {
-        $this->googleAnalytics4MeasurementId = $measurementId;
-        $this->googleAnalytics4ClientSecret = $clientSecret;
+        $this->googleAnalytics4MeasurementId = $value;
     }
 
     public function setGoogleTagManagerId(?string $value)
@@ -66,7 +63,6 @@ class SeoServicesResource extends JsonResource
             'googleVerification' => $this->googleVerification ?? null,
             'googleAnalyticsId' => $this->googleAnalyticsId ?? null,
             'googleAnalytics4MeasurementId' => $this->googleAnalytics4MeasurementId ?? null,
-            'googleAnalytics4ClientSecret' => $this->googleAnalytics4ClientSecret ?? null,
             'googleTagManagerId' => $this->googleTagManagerId ?? null,
             'yandexCounterId' => $this->yandexCounterId ?? null,
             'facebookPixelId' => $this->facebookPixelId ?? null,
