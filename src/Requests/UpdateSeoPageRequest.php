@@ -14,7 +14,7 @@ class UpdateSeoPageRequest extends FormRequest
             'description' => 'string|nullable',
             'openGraphTitle' => 'string|nullable',
             'openGraphDescription' => 'string|nullable',
-            'openGraphImage' => ['nullable', 'numeric', new FileRule()],
+            'openGraphImage' => ['nullable', new FileRule()],
         ];
     }
 }
