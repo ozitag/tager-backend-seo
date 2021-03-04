@@ -37,12 +37,6 @@ class SeoServiceProvider extends ModuleSettingsServiceProvider
             __DIR__ . '/../config.php' => config_path('tager-seo.php'),
         ]);
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                FlushSeoPagesCommand::class,
-            ]);
-        }
-
         TagerScopes::registerGroup('SEO', [
             SeoScope::EditServices => 'Edit services',
         ]);
