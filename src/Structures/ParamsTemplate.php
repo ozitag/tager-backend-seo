@@ -65,7 +65,7 @@ class ParamsTemplate
     {
         return $this->hasOpenGraphImage;
     }
-
+    
     public function getDefaultPageTitle(): ?string
     {
         return $this->defaultPageTitle;
