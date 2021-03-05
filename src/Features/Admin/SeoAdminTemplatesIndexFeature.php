@@ -34,7 +34,7 @@ class SeoAdminTemplatesIndexFeature extends Feature
                 'value' => [
                     'pageTitle' => $model ? $model->title : $paramsTemplate->getDefaultPageTitle(),
                     'pageDescription' => $model ? $model->description : $paramsTemplate->getDefaultPageDescription(),
-                    'openGraphImage' => $model ? $model->openGraphImage->getShortJson() : null
+                    'openGraphImage' => $model && $model->openGraphImage ? $model->openGraphImage->getShortJson() : null
                 ],
             ];
         }

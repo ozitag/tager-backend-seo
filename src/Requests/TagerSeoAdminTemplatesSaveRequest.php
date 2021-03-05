@@ -18,8 +18,8 @@ class TagerSeoAdminTemplatesSaveRequest extends FormRequest
         return [
             'templates' => 'nullable|array',
             'templates.*.template' => 'string',
-            'templates.*.pageTitle' => 'string',
-            'templates.*.pageDescription' => 'string',
+            'templates.*.pageTitle' => 'nullable|string',
+            'templates.*.pageDescription' => 'nullable|string',
             'templates.*.openGraphImage' => ['nullable', new FileRule()]
         ];
     }
