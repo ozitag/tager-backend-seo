@@ -3,26 +3,48 @@
 namespace OZiTAG\Tager\Backend\Seo;
 
 use Illuminate\Support\Facades\App;
+use OZiTAG\Tager\Backend\Seo\Contracts\ISitemapHandler;
 use OZiTAG\Tager\Backend\Seo\Repositories\TagerSeoTemplateRepository;
 use OZiTAG\Tager\Backend\Seo\Structures\ParamsTemplate;
-use OZiTAG\Tager\Backend\Sitemap\Contracts\ISitemapHandler;
 
 class TagerSeo
 {
     /** @var ParamsTemplate[] */
     private static $paramsTemplates = [];
 
+    /** @var ISitemapHandler[] */
+    private static $sitemapHandlers = [];
+
+
+    public static function registerParamsTemplate(string $templateId, ParamsTemplate $template)
+    {
+        self::$paramsTemplates[$templateId] = $template;
+    }
+
+    public static function registerSitemapHandler(string $handlerClassName)
+    {
+        $handlerClass = App::make($handlerClassName);
+        if (!$handlerClass instanceof ISitemapHandler) {
+            throw new \Exception('handlerClass must implements ISitemapHandler contract');
+        }
+
+        self::$sitemapHandlers[] = $handlerClass;
+    }
+
     /**
-     * @return array[]
+     * @return ParamsTemplate[]
      */
     public static function getParamsTemplates()
     {
         return self::$paramsTemplates;
     }
 
-    public static function registerParamsTemplate(string $templateId, ParamsTemplate $template)
+    /**
+     * @return ISitemapHandler[]
+     */
+    public static function getSitemapHandlers()
     {
-        self::$paramsTemplates[$templateId] = $template;
+        return self::$sitemapHandlers;
     }
 
     public static function isTemplateExist(string $templateId): bool

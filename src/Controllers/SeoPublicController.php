@@ -5,6 +5,7 @@ namespace OZiTAG\Tager\Backend\Seo\Controllers;
 use OZiTAG\Tager\Backend\Core\Controllers\Controller;
 use OZiTAG\Tager\Backend\Seo\Features\Guest\GetSeoTemplateFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Guest\GetSeoServicesFeature;
+use OZiTAG\Tager\Backend\Seo\Features\Guest\SitemapFeature;
 
 class SeoPublicController extends Controller
 {
@@ -18,5 +19,10 @@ class SeoPublicController extends Controller
         return $this->serve(GetSeoTemplateFeature::class, [
             'template' => $template
         ]);
+    }
+
+    public function sitemap()
+    {
+        return $this->serve(SitemapFeature::class);
     }
 }
