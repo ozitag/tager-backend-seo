@@ -5,13 +5,14 @@ namespace OZiTAG\Tager\Backend\Seo\Features\Admin;
 use Ozerich\FileStorage\Storage;
 use OZiTAG\Tager\Backend\Core\Features\Feature;
 use OZiTAG\Tager\Backend\Core\Resources\SuccessResource;
+use OZiTAG\Tager\Backend\HttpCache\HttpCache;
 use OZiTAG\Tager\Backend\Seo\Repositories\TagerSeoTemplateRepository;
 use OZiTAG\Tager\Backend\Seo\Requests\TagerSeoAdminTemplatesSaveRequest;
 use OZiTAG\Tager\Backend\Seo\TagerSeo;
 
 class SeoAdminTemplatesSaveFeature extends Feature
 {
-    public function handle(TagerSeoAdminTemplatesSaveRequest $request, TagerSeoTemplateRepository $repository)
+    public function handle(TagerSeoAdminTemplatesSaveRequest $request, TagerSeoTemplateRepository $repository, HttpCache $httpCache)
     {
         $updatedTemplates = [];
         foreach ($request->templates as $template) {
@@ -33,6 +34,8 @@ class SeoAdminTemplatesSaveFeature extends Feature
         }
 
         $repository->builder()->whereNotIn('template', $updatedTemplates)->delete();
+
+        $httpCache->clear('/api/tager/seo/template');
 
         return new SuccessResource();
     }
