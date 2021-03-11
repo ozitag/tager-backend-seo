@@ -76,7 +76,7 @@ class TagerSeo
         $templatesRepository = App::make(TagerSeoTemplateRepository::class);
         $template = $templatesRepository->getByTemplate($templateId);
         if ($template) {
-            return self::render($template->title, $variableValues);
+            return self::render($template->title ?? '', $variableValues);
         } else {
             return self::render(self::$paramsTemplates[$templateId]->getDefaultPageTitle(), $variableValues);
         }
@@ -92,7 +92,7 @@ class TagerSeo
         $templatesRepository = App::make(TagerSeoTemplateRepository::class);
         $template = $templatesRepository->getByTemplate($templateId);
         if ($template) {
-            return self::render($template->description, $variableValues);
+            return self::render($template->description ?? '', $variableValues);
         } else {
             return self::render(self::$paramsTemplates[$templateId]->getDefaultPageDescription(), $variableValues);
         }
