@@ -57,8 +57,12 @@ class TagerSeo
         return self::$paramsTemplates[$templateId] ?? null;
     }
 
-    private static function render(string $template, array $variables): string
+    private static function render(?string $template = null, array $variables = []): string
     {
+        if (empty($template)) {
+            return '';
+        }
+
         foreach ($variables as $param => $value) {
             $template = str_replace('{{' . $param . '}}', $value, $template);
         }
