@@ -31,15 +31,17 @@ class SeoServiceProvider extends ModuleSettingsServiceProvider
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
 
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'tager-seo');
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
 
         $this->publishes([
             __DIR__ . '/../config.php' => config_path('tager-seo.php'),
         ]);
 
+
         TagerScopes::registerGroup('SEO', [
-            SeoScope::EditServices => 'Edit Services',
-            SeoScope::EditTemplates => 'Edit Templates',
+            SeoScope::EditServices => __('tager-seo::scopes.edit_services'),
+            SeoScope::EditTemplates => __('tager-seo::scopes.edit_templates'),
         ]);
     }
 }

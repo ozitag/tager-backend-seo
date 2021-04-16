@@ -15,7 +15,7 @@ class FacebookPixelValidator implements IModuleSettingsValidator
         }
 
         if (!preg_match('#^\d{15}$#', $value)) {
-            return 'ID счетчика должен состоять из 15 цифр';
+            return __('tager-seo::errors.facebook_pixel');
         }
 
         return true;

@@ -15,7 +15,7 @@ class YandexVerificationValidator implements IModuleSettingsValidator
         }
 
         if (mb_strlen($value) !== 16) {
-            return 'Код должен состоять из 16 символов';
+            return __('tager-seo::errors.yandex_verification');
         }
 
         return true;

@@ -14,8 +14,8 @@ class GoogleAnalyticsValidator implements IModuleSettingsValidator
             return true;
         }
 
-        if(!preg_match('#^UA\-\d{4,10}\-\d{1,4}$#', $value)){
-            return 'Invalid GA account number"';
+        if (!preg_match('#^UA\-\d{4,10}\-\d{1,4}$#', $value)) {
+            return __('tager-seo::errors.google_analytics');
         }
 
         return true;

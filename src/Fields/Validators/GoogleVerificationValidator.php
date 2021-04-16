@@ -15,7 +15,7 @@ class GoogleVerificationValidator implements IModuleSettingsValidator
         }
 
         if (mb_strlen($value) !== 43) {
-            return 'Код должен состоять из 43 символов';
+            return __('tager-seo::errors.google_verification');
         }
 
         return true;

@@ -15,7 +15,7 @@ class GoogleAnalytics4MeasurementValidator implements IModuleSettingsValidator
         }
 
         if(!preg_match('#^G\-\w{10}$#', $value)){
-            return 'Invalid Google Analytics 4 Measurement number, correct format is "G-XXXXXXXXXX"';
+            return __('tager-seo::errors.google_analytics_4');
         }
 
         return true;

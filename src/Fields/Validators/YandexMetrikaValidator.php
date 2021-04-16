@@ -15,7 +15,7 @@ class YandexMetrikaValidator implements IModuleSettingsValidator
         }
 
         if (!preg_match('#^\d{8}$#', $value)) {
-            return 'ID счетчика должен состоять из 8 цифр';
+            return __('tager-seo::errors.yandex_metrika');
         }
 
         return true;
