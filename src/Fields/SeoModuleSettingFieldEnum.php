@@ -29,45 +29,59 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
         switch ($param) {
             case self::GoogleAnalyticsTrackingId:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.google_analytics_tracking_id')),
+                    new StringField(
+                        __('tager-seo::settings.google_analytics_tracking_id'),
+                        __('tager-seo::settings.google_analytics_tracking_id_placeholder')
+                    ),
                     new GoogleAnalyticsValidator(),
-                    __('tager-seo::settings.google_analytics_tracking_id_placeholder')
                 );
             case self::GoogleAnalytics4MeasurementId:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.google_analytics_4_measurement_id')),
+                    new StringField(
+                        __('tager-seo::settings.google_analytics_4_measurement_id'),
+                        __('tager-seo::settings.google_analytics_4_measurement_id_placeholder')
+                    ),
                     new GoogleAnalytics4MeasurementValidator(),
-                    __('tager-seo::settings.google_analytics_4_measurement_id_placeholder')
                 );
             case self::GoogleTagManagerId:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.google_tag_manager_id')),
-                    new GoogleTagManagerValidator(),
-                    __('tager-seo::settings.google_tag_manager_id_placeholder')
+                    new StringField(
+                        __('tager-seo::settings.google_tag_manager_id'),
+                        __('tager-seo::settings.google_tag_manager_id_placeholder')
+                    ),
+                    new GoogleTagManagerValidator()
                 );
             case self::YandexMetrikaCounterId:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.yandex_metrika_id')),
+                    new StringField(
+                        __('tager-seo::settings.yandex_metrika_id'),
+                        __('tager-seo::settings.yandex_metrika_id_placeholder')
+                    ),
                     new YandexMetrikaValidator(),
-                    __('tager-seo::settings.yandex_metrika_id_placeholder')
                 );
             case self::FacebookPixelId:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.facebook_pixel_id')),
+                    new StringField(
+                        __('tager-seo::settings.facebook_pixel_id'),
+                        __('tager-seo::settings.facebook_pixel_id_placeholder')
+                    ),
                     new FacebookPixelValidator(),
-                    __('tager-seo::settings.facebook_pixel_id_placeholder')
                 );
             case self::GoogleVerification:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.google_search_console_verification_code')),
+                    new StringField(
+                        __('tager-seo::settings.google_search_console_verification_code'),
+                        __('tager-seo::settings.google_search_console_verification_placeholder')
+                    ),
                     new GoogleVerificationValidator(),
-                    __('tager-seo::settings.google_search_console_verification_placeholder')
                 );
             case self::YandexVerification:
                 return new ModuleSettingField(
-                    new StringField(__('tager-seo::settings.yandex_webmaster_verification_code')),
+                    new StringField(
+                        __('tager-seo::settings.yandex_webmaster_verification_code'),
+                        __('tager-seo::settings.yandex_webmaster_verification_code_placeholder')
+                    ),
                     new YandexVerificationValidator(),
-                    __('tager-seo::settings.yandex_webmaster_verification_code_placeholder')
                 );
         }
     }
