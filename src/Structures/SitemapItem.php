@@ -27,9 +27,13 @@ class SitemapItem
         $this->changeFreq = $changeFreq;
     }
 
-    public function addImage(string $url, ?string $caption = null)
+    public function addImage(?string $url, ?string $caption = null)
     {
-        $this->images[] = [
+        if (!$url) return;
+
+        $url = trim($url);
+
+        $this->images[$url] = [
             'url' => $url,
             'caption' => $caption
         ];
@@ -56,7 +60,7 @@ class SitemapItem
         }
 
         if (!empty($this->images)) {
-            foreach ($this->images as $image) {
+            foreach (array_values($this->images) as $image) {
                 $result .= '<image:image><image:loc>' . $image['url'] . '</image:loc>';
 
                 if (!empty($image['caption'])) {
