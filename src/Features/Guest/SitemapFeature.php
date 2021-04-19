@@ -13,13 +13,16 @@ class SitemapFeature extends Feature
         /** @var SitemapItem[] $items */
         $items = $this->run(GetSitemapItemsJob::class);
 
-        $result = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        $result = '<?xml version="1.0" encoding="UTF-8"?>';
+        $result .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">';
+
         foreach ($items as $item) {
             $xml = $item->toXml();
             if (!empty($xml)) {
                 $result .= $item->toXml();
             }
         }
+
         $result .= '</urlset>';
 
         return response($result, 200, [

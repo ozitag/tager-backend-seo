@@ -64,7 +64,9 @@ class SitemapItem
                 $result .= '<image:image><image:loc>' . $image['url'] . '</image:loc>';
 
                 if (!empty($image['caption'])) {
-                    $result .= '<image:caption>' . trim($image['caption']) . '</image:caption>';
+                    $result .= '<image:caption>' .
+                        trim(preg_replace('/\s\s+/', ' ', $image['caption']))
+                        . '</image:caption>';
                 }
 
                 $result .= '</image:image>';
