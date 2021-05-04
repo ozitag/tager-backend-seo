@@ -102,6 +102,23 @@ class TagerSeo
         }
     }
 
+    public static function getPageKeywords(string $templateId, array $variableValues = []): ?string
+    {
+        if (array_key_exists($templateId, self::$paramsTemplates) == false) {
+            return null;
+        }
+
+        /** @var TagerSeoTemplateRepository $templatesRepository */
+        $templatesRepository = App::make(TagerSeoTemplateRepository::class);
+        $template = $templatesRepository->getByTemplate($templateId);
+
+        if ($template) {
+            return self::render($template->keywords ?? '', $variableValues);
+        } else {
+            return null;
+        }
+    }
+
     public static function getOpenGraphImageUrl(string $templateId): ?string
     {
         if (array_key_exists($templateId, self::$paramsTemplates) == false) {
