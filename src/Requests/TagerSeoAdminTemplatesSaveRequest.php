@@ -4,6 +4,8 @@ namespace OZiTAG\Tager\Backend\Seo\Requests;
 
 use Ozerich\FileStorage\Rules\FileRule;
 use OZiTAG\Tager\Backend\Core\Http\FormRequest;
+use OZiTAG\Tager\Backend\Crud\Requests\CrudFormRequest;
+use OZiTAG\Tager\Backend\Seo\TagerSeoConfig;
 
 /**
  * Class TagerSeoAdminTemplatesSaveRequest
@@ -20,6 +22,7 @@ class TagerSeoAdminTemplatesSaveRequest extends FormRequest
             'templates.*.template' => 'string',
             'templates.*.pageTitle' => 'nullable|string',
             'templates.*.pageDescription' => 'nullable|string',
+            'templates.*.pageKeywords' => 'nullable|string',
             'templates.*.openGraphImage' => ['nullable', new FileRule()]
         ];
     }

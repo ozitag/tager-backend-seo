@@ -1,10 +1,6 @@
 <?php
 
 return [
-    'pages' => [
-        'home' => 'Home'
-    ],
-    'scenarios' => [
-        'openGraph' => 'seo'
-    ]
+    'keywordsEnabled' => false,
+    'openGraphScenario' => null,
 ];

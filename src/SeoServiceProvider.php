@@ -37,8 +37,7 @@ class SeoServiceProvider extends ModuleSettingsServiceProvider
         $this->publishes([
             __DIR__ . '/../config.php' => config_path('tager-seo.php'),
         ]);
-
-
+        
         TagerScopes::registerGroup('SEO', [
             SeoScope::EditServices => __('tager-seo::scopes.edit_services'),
             SeoScope::EditTemplates => __('tager-seo::scopes.edit_templates'),

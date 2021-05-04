@@ -15,6 +15,8 @@ Route::group(['middleware' => 'api.cache'], function () {
 });
 
 Route::group(['prefix' => 'admin/seo', 'middleware' => ['passport:administrators', 'auth:api']], function () {
+    Route::get('/info', [SeoAdminSettingsController::class, 'info']);
+    
     Route::group(['middleware' => [AccessControlMiddleware::scopes(SeoScope::EditServices)]], function () {
         Route::get('/settings', [SeoAdminSettingsController::class, 'index']);
         Route::post('/settings', [SeoAdminSettingsController::class, 'save']);

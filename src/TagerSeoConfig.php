@@ -4,18 +4,18 @@ namespace OZiTAG\Tager\Backend\Seo;
 
 class TagerSeoConfig
 {
-    private function config($param = null, $default = null)
+    private static function config($param = null, $default = null)
     {
         return \config('tager-seo' . (empty($param) ? '' : '.' . $param), $default);
     }
 
-    private function getStorageScenario($id)
+    public static function getOpenGraphScenario()
     {
-        return $this->config('scenarios.' . $id);
+        return self::config('openGraphScenario', false);
     }
 
-    public function getOpenGraphScenario()
+    public static function isKeywordsEnabled(): bool
     {
-        return $this->getStorageScenario('openGraph');
+        return self::config('keywordsEnabled', false);
     }
 }
