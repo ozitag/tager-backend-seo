@@ -34,10 +34,10 @@ class SeoAdminTemplatesSaveFeature extends Feature
                 'open_graph_image_id' => Storage::fromUUIDtoId($template['openGraphImage'])
             ]);
 
-            if (TagerSeoConfig::getOpenGraphScenario()) {
+            if (TagerSeoConfig::getOpenGraphScenario() && !empty($template['openGraphImage'])) {
                 $storage->setFileScenario($template['openGraphImage'], TagerSeoConfig::getOpenGraphScenario());
             }
-            
+
             $updatedTemplates[] = $template['template'];
         }
 
