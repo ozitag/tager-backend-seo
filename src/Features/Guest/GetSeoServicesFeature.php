@@ -51,6 +51,10 @@ class GetSeoServicesFeature extends Feature
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::YandexVerification, FieldType::String)
         );
 
+        $resource->setGoogleOptimizeId(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleOptimizeId, FieldType::String)
+        );
+
         return $resource;
     }
 }

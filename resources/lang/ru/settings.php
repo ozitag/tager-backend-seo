@@ -1,12 +1,10 @@
 <?php
 
 return [
+    'google_optimize_id' => 'Google Optimize - Optimize ID',
     'google_analytics_tracking_id' => 'Google Analytics - Tracking ID',
-    'google_analytics_tracking_id_placeholder' => 'UA-XXXXXXXX-X',
     'google_analytics_4_measurement_id' => 'Google Analytics 4 - Measurement ID',
-    'google_analytics_4_measurement_id_placeholder' => 'G-XXXXXXXXXX',
     'google_tag_manager_id' => 'Google Tag Manager - ID',
-    'google_tag_manager_id_placeholder' => 'GTM-XXXXXXX',
     'yandex_metrika_id' => 'Яндекс.Метрика - ID',
     'yandex_metrika_id_placeholder' => '8 цифр',
     'facebook_pixel_id' => 'Пиксель Facebook - ID',

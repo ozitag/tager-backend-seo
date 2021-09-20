@@ -21,6 +21,8 @@ class SeoServicesResource extends JsonResource
 
     private ?string $googleVerification = null;
 
+    private ?string $googleOptimizeId = null;
+
     public function setYandexCounterId(?string $value)
     {
         $this->yandexCounterId = $value;
@@ -56,16 +58,22 @@ class SeoServicesResource extends JsonResource
         $this->yandexVerification = $value;
     }
 
+    public function setGoogleOptimizeId(?string $value)
+    {
+        $this->googleOptimizeId = $value;
+    }
+
     public function toArray($request)
     {
         return [
-            'yandexVerification' => $this->yandexVerification ?? null,
-            'googleVerification' => $this->googleVerification ?? null,
+            'googleTagManagerId' => $this->googleTagManagerId ?? null,
             'googleAnalyticsId' => $this->googleAnalyticsId ?? null,
             'googleAnalytics4MeasurementId' => $this->googleAnalytics4MeasurementId ?? null,
-            'googleTagManagerId' => $this->googleTagManagerId ?? null,
+            'googleOptimizeId' => $this->googleOptimizeId ?? null,
             'yandexCounterId' => $this->yandexCounterId ?? null,
             'facebookPixelId' => $this->facebookPixelId ?? null,
+            'googleVerification' => $this->googleVerification ?? null,
+            'yandexVerification' => $this->yandexVerification ?? null,
         ];
     }
 }
