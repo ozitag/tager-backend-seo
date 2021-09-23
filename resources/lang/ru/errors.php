@@ -2,6 +2,7 @@
 
 return [
     'facebook_pixel' => 'ID счетчика должен состоять из 15 цифр',
+    'tiktok_pixel' => 'ID счетчика должен состоять из 20 цифр',
     'google_analytics' => 'Неверный GA номер',
     'google_analytics_4' => 'Неверный Google Analytics 4 Measurement номер, корректный формат "G-XXXXXXXXXX"',
     'google_tag_manager' => 'Значение должно быть в формате "GTM-XXXXXXX"',

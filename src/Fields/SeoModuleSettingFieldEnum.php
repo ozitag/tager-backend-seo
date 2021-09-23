@@ -12,6 +12,7 @@ use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleOptimizeValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleTagManagerValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleAnalytics4MeasurementValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleVerificationValidator;
+use OZiTAG\Tager\Backend\Seo\Fields\Validators\TiktokPixelValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexMetrikaValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
 
@@ -23,6 +24,7 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
     const GoogleTagManagerId = 'GOOGLE_TAG_MANAGER_ID';
     const YandexMetrikaCounterId = 'YANDEX_METRIKA_COUNTER_ID';
     const FacebookPixelId = 'FACEBOOK_PIXEL_ID';
+    const TiktokPixelId = 'TIKTOK_PIXEL_ID';
     const GoogleVerification = 'GOOGLE_VERIFICATION';
     const YandexVerification = 'YANDEX_VERIFICATION';
 
@@ -76,6 +78,14 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
                         __('tager-seo::settings.facebook_pixel_id_placeholder')
                     ),
                     new FacebookPixelValidator(),
+                );
+            case self::TiktokPixelId:
+                return new ModuleSettingField(
+                    new StringField(
+                        'TikTok Pixel ID',
+                        ''
+                    ),
+                    new TiktokPixelValidator(),
                 );
             case self::GoogleVerification:
                 return new ModuleSettingField(

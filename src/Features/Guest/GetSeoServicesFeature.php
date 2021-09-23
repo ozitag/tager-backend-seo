@@ -19,6 +19,10 @@ class GetSeoServicesFeature extends Feature
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::FacebookPixelId, FieldType::String)
         );
 
+        $resource->setTiktokPixelId(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::TiktokPixelId, FieldType::String)
+        );
+
         $resource->setGoogleAnalyticsId(
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleAnalyticsTrackingId, FieldType::String)
         );

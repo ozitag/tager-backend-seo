@@ -17,6 +17,8 @@ class SeoServicesResource extends JsonResource
 
     private ?string $facebookPixelId = null;
 
+    private ?string $tiktokPixelId = null;
+
     private ?string $yandexVerification = null;
 
     private ?string $googleVerification = null;
@@ -48,6 +50,11 @@ class SeoServicesResource extends JsonResource
         $this->facebookPixelId = $value;
     }
 
+    public function setTiktokPixelId(?string $value)
+    {
+        $this->tiktokPixelId = $value;
+    }
+
     public function setGoogleVerification(?string $value)
     {
         $this->googleVerification = $value;
@@ -72,6 +79,7 @@ class SeoServicesResource extends JsonResource
             'googleOptimizeId' => $this->googleOptimizeId ?? null,
             'yandexCounterId' => $this->yandexCounterId ?? null,
             'facebookPixelId' => $this->facebookPixelId ?? null,
+            'tiktokPixelId' => $this->tiktokPixelId ?? null,
             'googleVerification' => $this->googleVerification ?? null,
             'yandexVerification' => $this->yandexVerification ?? null,
         ];
