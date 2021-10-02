@@ -10,9 +10,9 @@ return [
     'facebook_pixel_id' => 'Пиксель Facebook - ID',
     'facebook_pixel_id_placeholder' => '15 цифр',
     'pinterest_id_placeholder' => '13 цифр',
+    'tiktok_id_placeholder' => '20 символов',
     'google_search_console_verification_code' => 'Google Search Console - Код верификации',
     'google_search_console_verification_code_placeholder' => '43 символа',
     'yandex_webmaster_verification_code' => 'Яндекс.Вебмастер - Код верификации',
     'yandex_webmaster_verification_code_placeholder' => '16 символов',
-    'pinterest_id_placeholder' => '13 цифр',
 ];

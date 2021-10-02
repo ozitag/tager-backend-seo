@@ -85,7 +85,7 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
                 return new ModuleSettingField(
                     new StringField(
                         'TikTok Pixel ID',
-                        ''
+                        __('tager-seo::settings.tiktok_id_placeholder')
                     ),
                     new TiktokPixelValidator(),
                 );

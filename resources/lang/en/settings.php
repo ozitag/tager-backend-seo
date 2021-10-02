@@ -10,9 +10,9 @@ return [
     'facebook_pixel_id' => 'Facebook Pixel - ID',
     'facebook_pixel_id_placeholder' => '15 digits',
     'pinterest_id_placeholder' => '13 digits',
+    'tiktok_id_placeholder' => '20 chars',
     'google_search_console_verification_code' => 'Google Search Console - Verification code',
     'google_search_console_verification_code_placeholder' => '43 chars',
     'yandex_webmaster_verification_code' => 'Yandex.Webmaster - Verification code',
     'yandex_webmaster_verification_code_placeholder' => '16 chars',
-    'pinterest_id_placeholder' => '13 digits',
 ];
