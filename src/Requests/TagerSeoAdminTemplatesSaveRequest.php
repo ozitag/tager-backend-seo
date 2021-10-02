@@ -4,8 +4,6 @@ namespace OZiTAG\Tager\Backend\Seo\Requests;
 
 use Ozerich\FileStorage\Rules\FileRule;
 use OZiTAG\Tager\Backend\Core\Http\FormRequest;
-use OZiTAG\Tager\Backend\Crud\Requests\CrudFormRequest;
-use OZiTAG\Tager\Backend\Seo\TagerSeoConfig;
 
 /**
  * Class TagerSeoAdminTemplatesSaveRequest

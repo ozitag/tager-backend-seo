@@ -14,4 +14,5 @@ return [
     'google_search_console_verification_code_placeholder' => '43 символа',
     'yandex_webmaster_verification_code' => 'Яндекс.Вебмастер - Код верификации',
     'yandex_webmaster_verification_code_placeholder' => '16 символов',
+    'pinterest_id_placeholder' => '13 цифр',
 ];
