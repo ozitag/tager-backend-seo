@@ -9,6 +9,7 @@ return [
     'yandex_metrika_id_placeholder' => '8 цифр',
     'facebook_pixel_id' => 'Пиксель Facebook - ID',
     'facebook_pixel_id_placeholder' => '15 цифр',
+    'pinterest_id_placeholder' => '13 цифр',
     'google_search_console_verification_code' => 'Google Search Console - Код верификации',
     'google_search_console_verification_code_placeholder' => '43 символа',
     'yandex_webmaster_verification_code' => 'Яндекс.Вебмастер - Код верификации',

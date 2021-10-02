@@ -17,6 +17,8 @@ class SeoServicesResource extends JsonResource
 
     private ?string $facebookPixelId = null;
 
+    private ?string $pinterestId = null;
+
     private ?string $yandexVerification = null;
 
     private ?string $googleVerification = null;
@@ -63,6 +65,11 @@ class SeoServicesResource extends JsonResource
         $this->googleOptimizeId = $value;
     }
 
+    public function setPinterestId(?string $value)
+    {
+        $this->pinterestId = $value;
+    }
+
     public function toArray($request)
     {
         return [
@@ -72,6 +79,7 @@ class SeoServicesResource extends JsonResource
             'googleOptimizeId' => $this->googleOptimizeId ?? null,
             'yandexCounterId' => $this->yandexCounterId ?? null,
             'facebookPixelId' => $this->facebookPixelId ?? null,
+            'pinterestId' => $this->pinterestId ?? null,
             'googleVerification' => $this->googleVerification ?? null,
             'yandexVerification' => $this->yandexVerification ?? null,
         ];

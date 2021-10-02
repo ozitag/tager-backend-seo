@@ -2,6 +2,7 @@
 
 return [
     'facebook_pixel' => 'ID must contains 15 digits',
+    'pinterest' => 'ID must contains 13 digits',
     'google_analytics' => 'Invalid GA account number',
     'google_analytics_4' => 'Invalid Google Analytics 4 Measurement number, correct format is "G-XXXXXXXXXX"',
     'google_tag_manager' => 'Value must be compatible with "GTM-XXXXXXX"',

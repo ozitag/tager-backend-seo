@@ -55,6 +55,10 @@ class GetSeoServicesFeature extends Feature
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::GoogleOptimizeId, FieldType::String)
         );
 
+        $resource->setPinterestId(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::PinterestId, FieldType::String)
+        );
+
         return $resource;
     }
 }
