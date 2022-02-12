@@ -4,7 +4,6 @@ namespace OZiTAG\Tager\Backend\Seo\Fields;
 
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
 use OZiTAG\Tager\Backend\ModuleSettings\Contracts\IModuleSettingsFieldEnumContract;
-use OZiTAG\Tager\Backend\ModuleSettings\Structures\ModuleSettingFieldEnum;
 use OZiTAG\Tager\Backend\ModuleSettings\Structures\ModuleSettingField;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\FacebookPixelValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\GoogleAnalyticsValidator;
@@ -17,7 +16,7 @@ use OZiTAG\Tager\Backend\Seo\Fields\Validators\TiktokPixelValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexMetrikaValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
 
-class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
+class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
 {
     const GoogleAnalyticsTrackingId = 'GOOGLE_ANALYTICS_TRACKING_ID';
     const GoogleAnalytics4MeasurementId = 'GOOGLE_ANALYTICS4_MEASUREMENT_ID';
@@ -29,6 +28,22 @@ class SeoModuleSettingFieldEnum extends ModuleSettingFieldEnum implements IModul
     const PinterestId = 'PINTEREST_ID';
     const GoogleVerification = 'GOOGLE_VERIFICATION';
     const YandexVerification = 'YANDEX_VERIFICATION';
+
+    public static function getParams(): array
+    {
+        return [
+            self::GoogleAnalyticsTrackingId,
+            self::GoogleAnalytics4MeasurementId,
+            self::GoogleOptimizeId,
+            self::GoogleTagManagerId,
+            self::YandexMetrikaCounterId,
+            self::FacebookPixelId,
+            self::TiktokPixelId,
+            self::PinterestId,
+            self::GoogleVerification,
+            self::YandexVerification,
+        ];
+    }
 
     public static function field(string $param): ModuleSettingField
     {
