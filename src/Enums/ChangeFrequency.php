@@ -2,9 +2,7 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Enums;
 
-use OZiTAG\Tager\Backend\Core\Enums\Enum;
-
-class ChangeFrequency extends Enum
+enum ChangeFrequency: string
 {
     const Always = 'always';
     const Hourly = 'hourly';

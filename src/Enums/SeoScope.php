@@ -2,10 +2,8 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Enums;
 
-use OZiTAG\Tager\Backend\Core\Enums\Enum;
-
-final class SeoScope extends Enum
+enum SeoScope:string
 {
-    const EditServices = 'seo.edit-services';
-    const EditTemplates = 'seo.edit-templates';
+    case EditServices = 'seo.edit-services';
+    case EditTemplates = 'seo.edit-templates';
 }

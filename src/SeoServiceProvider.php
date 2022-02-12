@@ -39,8 +39,8 @@ class SeoServiceProvider extends ModuleSettingsServiceProvider
         ]);
         
         TagerScopes::registerGroup('SEO', [
-            SeoScope::EditServices => __('tager-seo::scopes.edit_services'),
-            SeoScope::EditTemplates => __('tager-seo::scopes.edit_templates'),
+            SeoScope::EditServices->value => __('tager-seo::scopes.edit_services'),
+            SeoScope::EditTemplates->value => __('tager-seo::scopes.edit_templates'),
         ]);
     }
 }

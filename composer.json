@@ -12,9 +12,9 @@
         }
     ],
     "require": {
-        "ozitag/tager-backend-core": "^1.2",
+        "ozitag/tager-backend-core": "^1.8",
         "ozitag/tager-backend-module-settings": "^1.2",
-        "ozitag/tager-backend-fields": "^1.5",
+        "ozitag/tager-backend-fields": "^1.6",
         "ozitag/tager-backend-rbac": "^1.3"
     },
     "autoload": {
