@@ -14,11 +14,11 @@ class ParamsTemplate
 
     protected ?string $defaultPageDescription;
 
-    public function __construct(string $name, array $variables = [], bool $hasOpenGraphImage = false, ?string $defaultPageTitle = null, ?string $defaultPageDescription = null)
+    public function __construct(string $name, ?array $variables = [], bool $hasOpenGraphImage = false, ?string $defaultPageTitle = null, ?string $defaultPageDescription = null)
     {
         $this->name = $name;
 
-        $this->variables = $variables;
+        $this->variables = $variables ?? [];
 
         $this->hasOpenGraphImage = $hasOpenGraphImage;
 
