@@ -18,7 +18,10 @@ class SitemapItem
 
     public function __construct(?string $url, ?Carbon $lastMod = null, string $changeFreq = null, float $priority = null)
     {
-        $this->url = $url ? (mb_substr($url, 0, 1) == '/' ? config('app.url') . $url : $url) : null;
+        $this->url = $url ? (str_starts_with($url, '/') ? config('app.url') . $url : $url) : null;
+        if (str_ends_with($this->url, '/')) {
+            $this->url = substr($this->url, 0, strlen($this->url) - 1);
+        }
 
         $this->priority = $priority;
 
