@@ -43,7 +43,7 @@ class SeoAdminTemplatesSaveFeature extends Feature
 
         $repository->builder()->whereNotIn('template', $updatedTemplates)->delete();
 
-        $httpCache->clear('/api/tager/seo/template');
+        $httpCache->clear('tager/seo/template');
 
         return new SuccessResource();
     }

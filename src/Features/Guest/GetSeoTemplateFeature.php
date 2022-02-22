@@ -21,7 +21,7 @@ class GetSeoTemplateFeature extends Feature
         $this->template = $template;
     }
 
-    public function handle(TagerSeoTemplateRepository $repository, TagerSeo $tagerSeo)
+    public function handle(TagerSeoTemplateRepository $repository)
     {
         $model = $repository->getByTemplate($this->template);
 
