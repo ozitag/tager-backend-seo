@@ -24,6 +24,8 @@ class SeoAdminTemplatesSaveFeature extends Feature
             $model = $repository->getByTemplate($template['template']);
             if ($model) {
                 $repository->set($model);
+            } else{
+                $repository->reset();
             }
 
             $repository->fillAndSave([
