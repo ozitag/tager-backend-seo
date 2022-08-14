@@ -40,9 +40,9 @@ class SeoAdminTemplatesSaveFeature extends Feature
                 $storage->setFileScenario($template['openGraphImage'], TagerSeoConfig::getOpenGraphScenario());
             }
 
-            $template = TagerSeo::getTemplate($template['template']);
-            if ($template->getHttpCacheNamespace()) {
-                $httpCache->clear($template->getHttpCacheNamespace());
+            $templateInstance = TagerSeo::getTemplate($template['template']);
+            if ($templateInstance->getHttpCacheNamespace()) {
+                $httpCache->clear($templateInstance->getHttpCacheNamespace());
             }
 
             $updatedTemplates[] = $template['template'];
