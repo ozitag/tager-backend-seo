@@ -14,7 +14,9 @@ class ParamsTemplate
 
     protected ?string $defaultPageDescription;
 
-    public function __construct(string $name, ?array $variables = [], bool $hasOpenGraphImage = false, ?string $defaultPageTitle = null, ?string $defaultPageDescription = null)
+    protected mixed $httpCacheNamespaces;
+
+    public function __construct(string $name, ?array $variables = [], bool $hasOpenGraphImage = false, ?string $defaultPageTitle = null, ?string $defaultPageDescription = null, $httpCacheNamespaces = [])
     {
         $this->name = $name;
 
@@ -25,6 +27,8 @@ class ParamsTemplate
         $this->defaultPageTitle = $defaultPageTitle;
 
         $this->defaultPageDescription = $defaultPageDescription;
+
+        $this->httpCacheNamespaces = $httpCacheNamespaces;
     }
 
     private function render(string $template, array $variables, ?string $default)
@@ -65,7 +69,7 @@ class ParamsTemplate
     {
         return $this->hasOpenGraphImage;
     }
-    
+
     public function getDefaultPageTitle(): ?string
     {
         return $this->defaultPageTitle;
@@ -74,5 +78,12 @@ class ParamsTemplate
     public function getDefaultPageDescription(): ?string
     {
         return $this->defaultPageDescription;
+    }
+
+    public function getHttpCacheNamespace(): array
+    {
+        return $this->httpCacheNamespaces
+            ? (is_array($this->httpCacheNamespaces) ? $this->httpCacheNamespaces : [$this->httpCacheNamespaces])
+            : [];
     }
 }

@@ -24,7 +24,7 @@ class SeoAdminTemplatesSaveFeature extends Feature
             $model = $repository->getByTemplate($template['template']);
             if ($model) {
                 $repository->set($model);
-            } else{
+            } else {
                 $repository->reset();
             }
 
@@ -38,6 +38,11 @@ class SeoAdminTemplatesSaveFeature extends Feature
 
             if (TagerSeoConfig::getOpenGraphScenario() && !empty($template['openGraphImage'])) {
                 $storage->setFileScenario($template['openGraphImage'], TagerSeoConfig::getOpenGraphScenario());
+            }
+
+            $template = TagerSeo::getTemplate($template['template']);
+            if ($template->getHttpCacheNamespace()) {
+                $httpCache->clear($template->getHttpCacheNamespace());
             }
 
             $updatedTemplates[] = $template['template'];
