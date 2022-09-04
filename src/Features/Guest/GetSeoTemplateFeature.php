@@ -37,7 +37,7 @@ class GetSeoTemplateFeature extends Feature
 
             $resource->setPageTitle($model->getDefaultPageTitle());
             $resource->setPageDescription($model->getDefaultPageDescription());
-            $resource->setPageTitle($model->getDefaultH1());
+            $resource->setH1($model->getDefaultH1());
         }
 
         return $resource;
