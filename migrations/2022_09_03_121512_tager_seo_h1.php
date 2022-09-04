@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TagerSeoTemplatesKeywords extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,7 +13,7 @@ class TagerSeoTemplatesKeywords extends Migration
     public function up()
     {
         Schema::table('tager_seo_templates', function (Blueprint $table) {
-            $table->string('keywords')->after('description')->nullable();
+            $table->string('h1')->after('keywords')->nullable();
         });
     }
 
@@ -26,7 +25,7 @@ class TagerSeoTemplatesKeywords extends Migration
     public function down()
     {
         Schema::table('tager_seo_templates', function (Blueprint $table) {
-            $table->dropColumn('keywords');
+            $table->dropColumn('h1');
         });
     }
-}
+};

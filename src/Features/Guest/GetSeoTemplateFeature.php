@@ -2,15 +2,11 @@
 
 namespace OZiTAG\Tager\Backend\Seo\Features\Guest;
 
-use Ozerich\FileStorage\Exceptions\InvalidThumbnailException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use OZiTAG\Tager\Backend\Core\Features\Feature;
-use OZiTAG\Tager\Backend\Core\Resources\SuccessResource;
-use OZiTAG\Tager\Backend\Seo\Jobs\GetSeoPageJobByAlias;
 use OZiTAG\Tager\Backend\Seo\Repositories\TagerSeoTemplateRepository;
-use OZiTAG\Tager\Backend\Seo\Resources\PublicSeoResource;
 use OZiTAG\Tager\Backend\Seo\Resources\SeoTemplateResource;
 use OZiTAG\Tager\Backend\Seo\TagerSeo;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class GetSeoTemplateFeature extends Feature
 {
@@ -31,6 +27,7 @@ class GetSeoTemplateFeature extends Feature
             $resource->setPageTitle($model->title);
             $resource->setPageDescription($model->description);
             $resource->setPageKeywords($model->keywords);
+            $resource->setH1($model->h1);
             $resource->setOpenGraphImage($model->openGraphImage);
         } else {
             $model = TagerSeo::getTemplate($this->template);
@@ -40,6 +37,7 @@ class GetSeoTemplateFeature extends Feature
 
             $resource->setPageTitle($model->getDefaultPageTitle());
             $resource->setPageDescription($model->getDefaultPageDescription());
+            $resource->setPageTitle($model->getDefaultH1());
         }
 
         return $resource;

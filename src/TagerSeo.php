@@ -14,8 +14,7 @@ class TagerSeo
 
     /** @var ISitemapHandler[] */
     private static $sitemapHandlers = [];
-
-
+    
     public static function registerParamsTemplate(string $templateId, ParamsTemplate $template)
     {
         self::$paramsTemplates[$templateId] = $template;
@@ -72,7 +71,7 @@ class TagerSeo
 
     public static function getPageTitle(string $templateId, array $variableValues = []): ?string
     {
-        if (array_key_exists($templateId, self::$paramsTemplates) == false) {
+        if (!array_key_exists($templateId, self::$paramsTemplates)) {
             return null;
         }
 
@@ -88,7 +87,7 @@ class TagerSeo
 
     public static function getPageDescription(string $templateId, array $variableValues = []): ?string
     {
-        if (array_key_exists($templateId, self::$paramsTemplates) == false) {
+        if (!array_key_exists($templateId, self::$paramsTemplates)) {
             return null;
         }
 
@@ -102,9 +101,25 @@ class TagerSeo
         }
     }
 
+    public static function getPageH1(string $templateId, array $variableValues = []): ?string
+    {
+        if (!array_key_exists($templateId, self::$paramsTemplates)) {
+            return null;
+        }
+
+        /** @var TagerSeoTemplateRepository $templatesRepository */
+        $templatesRepository = App::make(TagerSeoTemplateRepository::class);
+        $template = $templatesRepository->getByTemplate($templateId);
+        if ($template) {
+            return self::render($template->h1 ?? '', $variableValues);
+        } else {
+            return self::render(self::$paramsTemplates[$templateId]->getDefaultH1(), $variableValues);
+        }
+    }
+
     public static function getPageKeywords(string $templateId, array $variableValues = []): ?string
     {
-        if (array_key_exists($templateId, self::$paramsTemplates) == false) {
+        if (!array_key_exists($templateId, self::$paramsTemplates)) {
             return null;
         }
 
@@ -121,7 +136,7 @@ class TagerSeo
 
     public static function getOpenGraphImageUrl(string $templateId): ?string
     {
-        if (array_key_exists($templateId, self::$paramsTemplates) == false) {
+        if (!array_key_exists($templateId, self::$paramsTemplates)) {
             return null;
         }
 

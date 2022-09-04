@@ -13,6 +13,8 @@ class SeoTemplateResource extends JsonResource
 
     protected ?string $pageKeywords = null;
 
+    protected ?string $pageH1 = null;
+
     protected ?File $openGraphImage = null;
 
     public function setPageTitle(?string $value)
@@ -30,6 +32,11 @@ class SeoTemplateResource extends JsonResource
         $this->pageKeywords = $value;
     }
 
+    public function setH1(?string $value)
+    {
+        $this->pageH1 = $value;
+    }
+
     public function setOpenGraphImage(?File $value)
     {
         $this->openGraphImage = $value;
@@ -41,6 +48,7 @@ class SeoTemplateResource extends JsonResource
             'title' => $this->pageTitle,
             'description' => $this->pageDescription,
             'keywords' => $this->pageKeywords,
+            'h1' => $this->pageH1,
             'openGraphImage' => $this->openGraphImage ? $this->openGraphImage->getDefaultThumbnailUrl() : null
         ];
     }

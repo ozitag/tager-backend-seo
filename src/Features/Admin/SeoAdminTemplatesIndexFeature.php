@@ -30,11 +30,13 @@ class SeoAdminTemplatesIndexFeature extends Feature
                 'template' => $template,
                 'name' => $paramsTemplate->getName(),
                 'hasOpenGraphImage' => $paramsTemplate->hasOpenGraphImage(),
+                'h1Enabled' => $paramsTemplate->isH1Enabled(),
                 'variables' => $variables,
                 'value' => [
                     'pageTitle' => $model ? $model->title : $paramsTemplate->getDefaultPageTitle(),
                     'pageDescription' => $model ? $model->description : $paramsTemplate->getDefaultPageDescription(),
-                    'pageKeywords' => $model ? $model->keywords : null,
+                    'pageKeywords' => $model?->keywords,
+                    'h1' => $model ? $model->description : $paramsTemplate->getDefaultH1(),
                     'openGraphImage' => $model && $model->openGraphImage ? $model->openGraphImage->getShortJson() : null
                 ],
             ];

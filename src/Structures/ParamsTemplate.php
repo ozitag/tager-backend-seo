@@ -4,55 +4,54 @@ namespace OZiTAG\Tager\Backend\Seo\Structures;
 
 class ParamsTemplate
 {
-    protected string $name;
+    protected bool $h1Enabled = false;
 
-    protected array $variables;
+    protected ?string $defaultH1 = null;
 
-    protected bool $hasOpenGraphImage;
-
-    protected ?string $defaultPageTitle;
-
-    protected ?string $defaultPageDescription;
-
-    protected mixed $httpCacheNamespaces;
-
-    public function __construct(string $name, ?array $variables = [], bool $hasOpenGraphImage = false, ?string $defaultPageTitle = null, ?string $defaultPageDescription = null, $httpCacheNamespaces = [])
+    public function __construct(
+        protected string       $name,
+        protected ?array       $variables = [],
+        protected bool         $openGraphImageEnabled = false,
+        protected ?string      $defaultPageTitle = null,
+        protected ?string      $defaultPageDescription = null,
+        protected array|string $httpCacheNamespaces = [])
     {
-        $this->name = $name;
-
-        $this->variables = $variables ?? [];
-
-        $this->hasOpenGraphImage = $hasOpenGraphImage;
-
-        $this->defaultPageTitle = $defaultPageTitle;
-
-        $this->defaultPageDescription = $defaultPageDescription;
-
-        $this->httpCacheNamespaces = $httpCacheNamespaces;
     }
 
-    private function render(string $template, array $variables, ?string $default)
+    public function httpCacheNamespaces(array|string $value)
     {
-        if (empty($template)) {
-            return $default;
-        }
-
-        foreach ($variables as $param => $value) {
-            $template = str_replace('{{' . $param . '}}', $value, $template);
-        }
-
-        return $template;
+        $this->httpCacheNamespaces = $value;
+        return $this;
     }
 
-    public function renderPageTitle($variableValues = [])
+    public function enableH1()
     {
-        return $this->render($this->defaultPageTitle, $variableValues, $this->defaultPageTitle);
+        $this->h1Enabled = true;
+        return $this;
     }
 
-    public function renderPageDescription($variableValues = [])
+    public function enableOpenGraphImage()
     {
-        return $this->render($this->defaultPageDescription, $variableValues, $this->defaultPageDescription);
+        $this->openGraphImageEnabled = true;
+        return $this;
+    }
 
+    public function defaultPageTitle(string $value)
+    {
+        $this->defaultPageTitle = $value;
+        return $this;
+    }
+
+    public function defaultPageDescription(string $value)
+    {
+        $this->defaultPageDescription = $value;
+        return $this;
+    }
+
+    public function defaultH1(string $value)
+    {
+        $this->defaultH1 = $value;
+        return $this;
     }
 
     public function getVariables(): array
@@ -67,7 +66,12 @@ class ParamsTemplate
 
     public function hasOpenGraphImage(): bool
     {
-        return $this->hasOpenGraphImage;
+        return $this->openGraphImageEnabled;
+    }
+
+    public function isH1Enabled(): bool
+    {
+        return $this->h1Enabled;
     }
 
     public function getDefaultPageTitle(): ?string
@@ -78,6 +82,11 @@ class ParamsTemplate
     public function getDefaultPageDescription(): ?string
     {
         return $this->defaultPageDescription;
+    }
+
+    public function getDefaultH1(): ?string
+    {
+        return $this->defaultH1;
     }
 
     public function getHttpCacheNamespace(): array

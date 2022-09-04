@@ -19,7 +19,7 @@ class SeoAdminTemplatesSaveFeature extends Feature
     {
         $updatedTemplates = [];
         foreach ($request->templates as $template) {
-            if (TagerSeo::isTemplateExist($template['template']) == false) continue;
+            if (!TagerSeo::isTemplateExist($template['template'])) continue;
 
             $model = $repository->getByTemplate($template['template']);
             if ($model) {
@@ -33,6 +33,7 @@ class SeoAdminTemplatesSaveFeature extends Feature
                 'title' => $template['pageTitle'],
                 'description' => $template['pageDescription'],
                 'keywords' => $template['pageKeywords'] ?? null,
+                'h1' => $template['h1'] ?? null,
                 'open_graph_image_id' => Storage::fromUUIDtoId($template['openGraphImage'])
             ]);
 

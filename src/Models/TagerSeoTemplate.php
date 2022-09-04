@@ -14,6 +14,7 @@ use Ozerich\FileStorage\Models\File;
  * @property string $title
  * @property string $description
  * @property string $keywords
+ * @property string $h1
  * @property string $open_graph_image_id
  *
  * @property File $openGraphImage
@@ -31,7 +32,7 @@ class TagerSeoTemplate extends Model
      */
     protected $fillable = [
         'template',
-        'title', 'description', 'keywords',
+        'title', 'description', 'keywords', 'h1',
         'open_graph_image_id'
     ];
 

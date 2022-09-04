@@ -15,7 +15,6 @@ class GetSitemapItemsJob extends Job
         $result = [];
 
         foreach ($handlers as $handler) {
-            /** @var SitemapItem[] $handlerResult */
             $handlerResult = $handler->handle();
 
             foreach ($handlerResult as $item) {
