@@ -15,6 +15,10 @@ class GetSeoServicesFeature extends Feature
     {
         $resource = new SeoServicesResource([]);
 
+        $resource->setHeadSnippet(
+            $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::HeadSnippet, FieldType::Text)
+        );
+
         $resource->setFacebookPixelId(
             $settings->getPublicValue('seo', SeoModuleSettingFieldEnum::FacebookPixelId, FieldType::String)
         );

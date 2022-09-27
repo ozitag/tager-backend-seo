@@ -7,6 +7,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class SeoServicesResource extends JsonResource
 {
+    private ?string $headSnippet = null;
+
     private ?string $yandexCounterId = null;
 
     private ?string $googleAnalyticsId = null;
@@ -77,9 +79,15 @@ class SeoServicesResource extends JsonResource
         $this->pinterestId = $value;
     }
 
+    public function setHeadSnippet(?string $value)
+    {
+        $this->headSnippet = $value;
+    }
+
     public function toArray($request)
     {
         return [
+            'headSnippet' => $this->headSnippet ?? null,
             'googleTagManagerId' => $this->googleTagManagerId ?? null,
             'googleAnalyticsId' => $this->googleAnalyticsId ?? null,
             'googleAnalytics4MeasurementId' => $this->googleAnalytics4MeasurementId ?? null,

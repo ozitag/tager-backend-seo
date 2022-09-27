@@ -3,6 +3,7 @@
 namespace OZiTAG\Tager\Backend\Seo\Fields;
 
 use OZiTAG\Tager\Backend\Fields\Fields\StringField;
+use OZiTAG\Tager\Backend\Fields\Fields\TextField;
 use OZiTAG\Tager\Backend\ModuleSettings\Contracts\IModuleSettingsFieldEnumContract;
 use OZiTAG\Tager\Backend\ModuleSettings\Structures\ModuleSettingField;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\FacebookPixelValidator;
@@ -18,6 +19,7 @@ use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
 
 class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
 {
+    const HeadSnippet = 'HEAD_SNIPPET';
     const GoogleAnalyticsTrackingId = 'GOOGLE_ANALYTICS_TRACKING_ID';
     const GoogleAnalytics4MeasurementId = 'GOOGLE_ANALYTICS4_MEASUREMENT_ID';
     const GoogleOptimizeId = 'GOOGLE_OPTIMIZE_ID';
@@ -32,6 +34,7 @@ class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
     public static function getParams(): array
     {
         return [
+            self::HeadSnippet,
             self::GoogleAnalyticsTrackingId,
             self::GoogleAnalytics4MeasurementId,
             self::GoogleOptimizeId,
@@ -48,6 +51,13 @@ class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
     public static function field(string $param): ModuleSettingField
     {
         switch ($param) {
+            case self::HeadSnippet:
+                return new ModuleSettingField(
+                    new TextField(
+                        __('tager-seo::settings.head_snippet'),
+                        ''
+                    )
+                );
             case self::GoogleTagManagerId:
                 return new ModuleSettingField(
                     new StringField(
