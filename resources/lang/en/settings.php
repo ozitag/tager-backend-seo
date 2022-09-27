@@ -15,4 +15,5 @@ return [
     'google_search_console_verification_code_placeholder' => '43 chars',
     'yandex_webmaster_verification_code' => 'Yandex.Webmaster - Verification code',
     'yandex_webmaster_verification_code_placeholder' => '16 chars',
+    'head_snippet' => "JavaScript code snippet, inserted inside <head> tag"
 ];
