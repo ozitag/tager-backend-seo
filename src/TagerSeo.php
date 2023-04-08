@@ -14,7 +14,10 @@ class TagerSeo
 
     /** @var ISitemapHandler[] */
     private static $sitemapHandlers = [];
-    
+
+    /** @var string[] */
+    private static $blackListHandlers = [];
+
     public static function registerParamsTemplate(string $templateId, ParamsTemplate $template)
     {
         self::$paramsTemplates[$templateId] = $template;
@@ -22,12 +25,29 @@ class TagerSeo
 
     public static function registerSitemapHandler(string $handlerClassName)
     {
+        if (in_array($handlerClassName, self::$blackListHandlers)) {
+            return;
+        }
+
         $handlerClass = App::make($handlerClassName);
         if (!$handlerClass instanceof ISitemapHandler) {
             throw new \Exception('handlerClass must implements ISitemapHandler contract');
         }
 
         self::$sitemapHandlers[] = $handlerClass;
+    }
+
+    public static function deregisterSitemapHandler(string $handlerClassName)
+    {
+        if (in_array($handlerClassName, self::$blackListHandlers)) {
+            return;
+        }
+
+        self::$sitemapHandlers = array_filter(self::$sitemapHandlers, function ($item) use ($handlerClassName) {
+            return $item::class !== $handlerClassName;
+        });
+
+        self::$blackListHandlers[] = $handlerClassName;
     }
 
     /**
