@@ -17,10 +17,6 @@ class SeoAdminSettingsController extends AdminSettingsController
 
     public function info()
     {
-        if (TagerSeoConfig::isRobotsTxtEditorEnabled()) {
-            throw new ServiceUnavailableHttpException();
-        }
-
         return $this->serve(SeoAdminInfoFeature::class);
     }
 }
