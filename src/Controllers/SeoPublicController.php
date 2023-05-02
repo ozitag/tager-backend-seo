@@ -5,7 +5,10 @@ namespace OZiTAG\Tager\Backend\Seo\Controllers;
 use OZiTAG\Tager\Backend\Core\Controllers\Controller;
 use OZiTAG\Tager\Backend\Seo\Features\Guest\GetSeoTemplateFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Guest\GetSeoServicesFeature;
+use OZiTAG\Tager\Backend\Seo\Features\Guest\RobotsTxtFeature;
 use OZiTAG\Tager\Backend\Seo\Features\Guest\SitemapFeature;
+use OZiTAG\Tager\Backend\Seo\TagerSeoConfig;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 class SeoPublicController extends Controller
 {
@@ -24,5 +27,14 @@ class SeoPublicController extends Controller
     public function sitemap()
     {
         return $this->serve(SitemapFeature::class);
+    }
+
+    public function robotsTxt()
+    {
+        if(!TagerSeoConfig::isRobotsTxtEditorEnabled()){
+            throw new ServiceUnavailableHttpException(null, 'robots.txt is not enabled in Backend module');
+        }
+
+        return $this->serve(RobotsTxtFeature::class);
     }
 }

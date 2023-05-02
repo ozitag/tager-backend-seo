@@ -12,11 +12,12 @@ Route::group(['middleware' => 'api.cache'], function () {
     Route::get('/tager/seo/services', [SeoPublicController::class, 'services']);
 
     Route::get('sitemap.xml', [SeoPublicController::class, 'sitemap']);
+    Route::get('robots.txt', [SeoPublicController::class, 'robotsTxt']);
 });
 
 Route::group(['prefix' => 'admin/seo', 'middleware' => ['passport:administrators', 'auth:api']], function () {
     Route::get('/info', [SeoAdminSettingsController::class, 'info']);
-    
+
     Route::group(['middleware' => [AccessControlMiddleware::scopes(SeoScope::EditServices)]], function () {
         Route::get('/settings', [SeoAdminSettingsController::class, 'index']);
         Route::post('/settings', [SeoAdminSettingsController::class, 'save']);

@@ -18,4 +18,9 @@ class TagerSeoConfig
     {
         return self::config('keywordsEnabled', false);
     }
+
+    public static function isRobotsTxtEditorEnabled(): bool
+    {
+        return self::config('robotsTxtEditorEnabled', false);
+    }
 }

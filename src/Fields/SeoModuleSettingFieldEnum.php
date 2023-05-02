@@ -16,10 +16,12 @@ use OZiTAG\Tager\Backend\Seo\Fields\Validators\PinterestValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\TiktokPixelValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexMetrikaValidator;
 use OZiTAG\Tager\Backend\Seo\Fields\Validators\YandexVerificationValidator;
+use OZiTAG\Tager\Backend\Seo\TagerSeoConfig;
 
 class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
 {
     const HeadSnippet = 'HEAD_SNIPPET';
+    const RobotsTxt = 'ROBOTS_TXT';
     const GoogleAnalyticsTrackingId = 'GOOGLE_ANALYTICS_TRACKING_ID';
     const GoogleAnalytics4MeasurementId = 'GOOGLE_ANALYTICS4_MEASUREMENT_ID';
     const GoogleOptimizeId = 'GOOGLE_OPTIMIZE_ID';
@@ -33,7 +35,13 @@ class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
 
     public static function getParams(): array
     {
-        return [
+        $data = [];
+
+        if (TagerSeoConfig::isRobotsTxtEditorEnabled()) {
+            $data[] = self::RobotsTxt;
+        }
+
+        return array_merge($data, [
             self::HeadSnippet,
             self::GoogleAnalyticsTrackingId,
             self::GoogleAnalytics4MeasurementId,
@@ -45,12 +53,19 @@ class SeoModuleSettingFieldEnum implements IModuleSettingsFieldEnumContract
             self::PinterestId,
             self::GoogleVerification,
             self::YandexVerification,
-        ];
+        ]);
     }
 
     public static function field(string $param): ModuleSettingField
     {
         switch ($param) {
+            case self::RobotsTxt:
+                return new ModuleSettingField(
+                    new TextField(
+                        'robots.txt',
+                        ''
+                    )
+                );
             case self::HeadSnippet:
                 return new ModuleSettingField(
                     new TextField(
