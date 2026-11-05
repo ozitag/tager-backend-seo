@@ -16,7 +16,7 @@ class SitemapItem
 
     private array $images = [];
 
-    public function __construct(?string $url, ?Carbon $lastMod = null, string $changeFreq = null, float $priority = null)
+    public function __construct(?string $url, ?Carbon $lastMod = null, ?string $changeFreq = null, ?float $priority = null)
     {
         $this->url = $url ? (str_starts_with($url, '/') ? config('app.url') . $url : $url) : null;
         if (str_ends_with($this->url, '/')) {
